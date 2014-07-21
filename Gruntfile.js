@@ -31,7 +31,19 @@ module.exports = function(grunt) {
 			unit: {
 				configFile: 'test/karma.conf.js'
 			}
-		}
+		},
+
+		explainjs: {
+			dist: {
+				options: {
+					showFilename: true // default is false
+				},
+				files: [{
+					src: ['app/app.js'],
+					dest: 'dist/explainjs/explain.html'
+				}]
+			},
+		},
 
 
 
@@ -39,7 +51,9 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-karma');
+	grunt.loadNpmTasks('grunt-explainjs');
 
+	grunt.registerTask('doc', ['explainjs']);
 	grunt.registerTask('default', ['jshint', 'karma']);
 
 };
