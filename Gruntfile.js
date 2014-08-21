@@ -39,7 +39,7 @@ module.exports = function(grunt) {
 					showFilename: true // default is false
 				},
 				files: [{
-					src: ['app/app.js'],
+					src: ['./app/js/app.js'],
 					dest: 'dist/explainjs/explain.html'
 				}]
 			},

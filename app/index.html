@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="metalist is production ready sample angularJs app">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
     <title>Meta List</title>
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
     <link rel="stylesheet" href="css/base.css">
@@ -22,7 +22,7 @@
 </head>
 
 <body>
-        <div id="mobile">        
+    <div id="mobile">        
         <div class="logo-container">
             <span>metalist</span>
         </div>
@@ -39,88 +39,105 @@
                 <span>metalist</span>
             </div>
             <div id="list-view">
-                <ul class="list-container">
-                
+                <ul class="list-container"  ng-controller="MyCtrl1">
+                    <li id="list-item" class="list" ng-repeat="item in items">
+                        <span class="icon edit-list icon-list"></span>
+                        <span class="icon delete-list icon-delete right"></span>
+                        <span class="title" ng-click="showTasks(item)" >{{ item.title }}</span>
+                        <span class="input-wrapper hidden"> 
+                            <!-- <input maxlength="255" class="edit-list-input " type="text" value={{ title }}>  -->
+                        </span>
+                    </li>
+
                 </ul>
                 <div class="add-new-list-container">
-                    <input type="text" class="add-new-list" placeholder="+ Add new list">
+                    <input type="text" class="add-new-list" ng-click="doSomething()" placeholder="+ Add new list">
                 </div>
             </div>
         </div>
         <div id="main-content">
-            <div id="task-view">
+            <div id="task-view" >
 
                 <div class="add-task-container">
                     <input type="text" class="add-task" placeholder="add a new task" />
                 </div>
-                <div class="task-group">
-                    <ul class="task-remaining">
+                <div class="task-group" >
 
+                    <ul class="task-remaining" ng-repeat= "item in data.tasks">
+
+                        <li class="task-item">
+
+                        <span class="icon icon-task-checkbox check-task"></span>
+                        <span class="icon icon-task-separator"></span>
+                        <span class="task-title">{{item.title}}</span>
+                        <span class="icon icon-delete delete-task right"></span>
+
+                    </li>
+
+                </ul>
+                <h1 class="text-color-flip">completed task</h1>
+
+                <ul class="task-complete">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="detail">
+
+        <div class="panel">
+            <div class="panel-title">
+                <span>Task Detail</span>
+            </div>
+
+            <h1 class="panel-heading">
+                <span>content</span>
+            </h1>
+            <div id="note-view">
+                <div class="note-container">
+                    <textarea class="note" disabled></textarea>
+                </div>
+            </div>
+
+
+
+            <h1 class="panel-heading">
+                <span>comments</span>
+            </h1>
+
+            <div id="comment-view">
+                <div class="comment-container">
+                    <ul class="comments">
 
                     </ul>
-                    <h1 class="text-color-flip">completed task</h1>
-
-                    <ul class="task-complete">
-
-                    </ul>
+                    <div class="add-comment-container">
+                        <input type="text" class="add-comment" placeholder="add comment" disabled/>
+                    </div>
                 </div>
             </div>
         </div>
-        <div id="detail">
-
-            <div class="panel">
-                <div class="panel-title">
-                    <span>Task Detail</span>
-                </div>
-
-                <h1 class="panel-heading">
-                    <span>content</span>
-                </h1>
-                <div id="note-view">
-                    <div class="note-container">
-                        <textarea class="note" disabled></textarea>
-                    </div>
-                </div>
-
-
-
-                <h1 class="panel-heading">
-                    <span>comments</span>
-                </h1>
-
-                <div id="comment-view">
-                    <div class="comment-container">
-                        <ul class="comments">
-
-                        </ul>
-                        <div class="add-comment-container">
-                            <input type="text" class="add-comment" placeholder="add comment" disabled/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="actionbar">
-            <div class="save-frame"></div> 
-            
-            <!-- <a class="save">fork me on github</a> -->
-            <a class="button github" target="_blank" href="https://github.com/metanitesh/Js.metaList"><span class="icon icon-gihub"></span><span>fork me on github</span></a>
-
-            <a class="button save">save</a>
-            
-        </div>
-
-
-        <div class="clr"></div>
     </div>
-    <div class="loader">
-        <img src="images/loader.gif" width="33" alt="">
+    <div id="actionbar">
+        <div class="save-frame"></div> 
+
+        <!-- <a class="save">fork me on github</a> -->
+        <a class="button github" target="_blank" href="https://github.com/metanitesh/Js.metaList"><span class="icon icon-gihub"></span><span>fork me on github</span></a>
+
+        <a class="button save">save</a>
+
     </div>
-    
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="js/app.js"></script>
-    
+
+
+    <div class="clr"></div>
+</div>
+<div class="loader">
+    <!-- <img src="images/loader.gif" width="33" alt=""> -->
+</div>
+
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="js/app.js"></script>
+
 </body>
 
 </html>
