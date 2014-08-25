@@ -42,7 +42,7 @@
                 <ul class="list-container"  ng-controller="listController">
                     <li id="list-item" class="list" ng-repeat="item in items" ng-class="{ 'list-active': $index == selected}">   
                         <span class="icon edit-list icon-list" ng-class="{ 'icon-list-active': $index == selected}" ></span>
-                        <span class="icon delete-list icon-delete right" ng-class="{ 'icon-delete-active': $index == selected}" ></span>
+                        <span class="icon delete-list icon-delete right" ng-click="deleteTask($index)" ng-class="{ 'icon-delete-active': $index == selected}" ></span>
                         <span class="title" ng-click="showTasks($index, item)" >{{ item.title }}</span>
                         <span class="input-wrapper hidden" > 
                             <input maxlength="255" ng-click="addItem(item)" class="edit-list-input " type="text" value={{ title }}> 
