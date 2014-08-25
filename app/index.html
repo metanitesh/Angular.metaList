@@ -39,19 +39,18 @@
                 <span>metalist</span>
             </div>
             <div id="list-view">
-                <ul class="list-container"  ng-controller="MyCtrl1">
-                    <li id="list-item" class="list" ng-repeat="item in items">
-                        <span class="icon edit-list icon-list"></span>
-                        <span class="icon delete-list icon-delete right"></span>
-                        <span class="title" ng-click="showTasks(item)" >{{ item.title }}</span>
-                        <span class="input-wrapper hidden"> 
-                            <!-- <input maxlength="255" class="edit-list-input " type="text" value={{ title }}>  -->
+                <ul class="list-container"  ng-controller="listController">
+                    <li id="list-item" class="list" ng-repeat="item in items" ng-class="{ 'list-active': $index == selected}">   
+                        <span class="icon edit-list icon-list" ng-class="{ 'icon-list-active': $index == selected}" ></span>
+                        <span class="icon delete-list icon-delete right" ng-class="{ 'icon-delete-active': $index == selected}" ></span>
+                        <span class="title" ng-click="showTasks($index, item)" >{{ item.title }}</span>
+                        <span class="input-wrapper hidden" > 
+                            <input maxlength="255" ng-click="addItem(item)" class="edit-list-input " type="text" value={{ title }}> 
                         </span>
                     </li>
-
                 </ul>
                 <div class="add-new-list-container">
-                    <input type="text" class="add-new-list" ng-click="doSomething()" placeholder="+ Add new list">
+                    <input type="text" class="add-new-list" ng-click="addItem(item)" placeholder="+ Add new list">
                 </div>
             </div>
         </div>
