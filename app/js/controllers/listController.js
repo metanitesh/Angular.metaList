@@ -7,8 +7,10 @@ metaList.controller('listController', ['$rootScope', '$scope', 'data',
 			$scope.selected = $index;
 		}
 
-		// $scope.addItem = function(item) {
-					
-		// }
+		$scope.deleteTask = function($index){
+			$scope.items.splice($index, 1);
+		}
+		
+		
 	}
 ])
