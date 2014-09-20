@@ -1,4 +1,5 @@
 metaList.controller('listController', ['$rootScope', '$scope', 'data',
+	
 	function($rootScope, $scope, data) {
 		$scope.items = data;
 
