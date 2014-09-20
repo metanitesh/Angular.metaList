@@ -54,6 +54,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-explainjs');
 
 	grunt.registerTask('doc', ['explainjs']);
-	grunt.registerTask('default', ['jshint', 'karma']);
+	grunt.registerTask('default', [ 'karma']);
 
 };
