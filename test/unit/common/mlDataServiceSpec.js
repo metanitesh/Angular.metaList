@@ -9,12 +9,15 @@ describe('data service', function() {
   it("gerList: should return listItems", inject(function(mlData) {
 
     var expected = [{
-      title: "books"
-      }, {
-      title: "movies"
-      }, {
-      title: "life"
-    }];
+    title: "books",
+    id: 1
+    }, {
+    title: "movies",
+    id: 2
+    }, {
+    title: "life",
+    id: 3
+  }];
 
     expect(mlData.getLists()).toEqual(expected);
   }))
