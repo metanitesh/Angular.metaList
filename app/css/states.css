@@ -1,7 +1,11 @@
 .hidden{
-	display: none;
+	display: none ;
 }
 
 .disabled{
-	opacity: 0.5;
+	opacity: 0.5 ;
+}
+
+.show{
+    display: inline-block;
 }

@@ -1,5 +1,5 @@
 <ul>
-<li id="list-item" class="list" ng-class= "{'list-active': selected === list.id}"  ng-repeat="list in lists" ng-click='selectList(list)' >
+<li id="list-item" class="list" ng-class= "{'list-active': selected === list.id}"  ng-repeat="list in lists" ng-click='selectList(list)' ng-dblclick="enableEditMode(list)">
     <display-list></display-list>
     <add-new-list /> 
 </li>
