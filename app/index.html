@@ -38,96 +38,9 @@
             <div class="logo-container">
                 <span>metalist</span>
             </div>
-            <div id="list-view" ng-controller="listController">
-                <ul class="list-container"  >
-                    <li id="list-item" class="list" ng-repeat="item in items" ng-class="{ 'list-active': $index == selected}">   
-                        <span class="icon edit-list icon-list" ng-class="{ 'icon-list-active': $index == selected}" ></span>
-                        <span class="icon delete-list icon-delete right" ng-click="deleteTask($index)" ng-class="{ 'icon-delete-active': $index == selected}" ></span>
-                        <span class="title" ng-click="showTasks($index, item)" >{{ item.title }}</span>
-                        <span class="input-wrapper hidden" > 
-                            <input maxlength="255" ng-enter="addItem(item)" class="edit-list-input " type="text" value={{ title }}> 
-                        </span>
-                    </li>
-                </ul>
-                <div class="add-new-list-container">
-                    <input type="text" class="add-new-list" ng-enter="addItem()" ng-model="newItemTitle" placeholder="+ Add new list">
-                </div>
-            </div>
-        </div>
-        <div id="main-content">
-            <div id="task-view" >
 
-                <div class="add-task-container">
-                    <input type="text" class="add-task" placeholder="add a new task" />
-                </div>
-                <div class="task-group" >
-
-                    <ul class="task-remaining" ng-repeat= "item in data.tasks">
-
-                        <li class="task-item">
-
-                        <span class="icon icon-task-checkbox check-task"></span>
-                        <span class="icon icon-task-separator"></span>
-                        <span class="task-title">{{item.title}}</span>
-                        <span class="icon icon-delete delete-task right"></span>
-
-                    </li>
-
-                </ul>
-                <h1 class="text-color-flip">completed task</h1>
-
-                <ul class="task-complete">
-
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div id="detail">
-
-        <div class="panel">
-            <div class="panel-title">
-                <span>Task Detail</span>
-            </div>
-
-            <h1 class="panel-heading">
-                <span>content</span>
-            </h1>
-            <div id="note-view">
-                <div class="note-container">
-                    <textarea class="note" disabled></textarea>
-                </div>
-            </div>
-
-
-
-            <h1 class="panel-heading">
-                <span>comments</span>
-            </h1>
-
-            <div id="comment-view">
-                <div class="comment-container">
-                    <ul class="comments">
-
-                    </ul>
-                    <div class="add-comment-container">
-                        <input type="text" class="add-comment" placeholder="add comment" disabled/>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="actionbar">
-        <div class="save-frame"></div> 
-
-        <!-- <a class="save">fork me on github</a> -->
-        <a class="button github" target="_blank" href="https://github.com/metanitesh/Js.metaList"><span class="icon icon-gihub"></span><span>fork me on github</span></a>
-
-        <a class="button save">save</a>
-
-    </div>
-
-
-    <div class="clr"></div>
+            <list></list>
+    </div>        
 </div>
 <div class="loader">
     <!-- <img src="images/loader.gif" width="33" alt=""> -->
@@ -135,11 +48,11 @@
 
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
-<script src="js/app.js"></script>
-<script src="js/controllers/listController.js"></script>
-<script src="js/directives/helper.js"></script>
-<script src="js/services/data.js"></script>
-
+<script src="app-components/app.js"></script>
+<script src="app-components/common/services/ml-data.js"></script>
+<script src="app-components/list/list-controller.js"></script>
+<script src="app-components/list/list-directive.js"></script>
+<script src="app-components/list/display-list/display-list-directive.js"></script>
 
 </body>
 

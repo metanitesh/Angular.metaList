@@ -26,7 +26,7 @@ describe("list controller", function() {
     })
 
     /*then*/
-    expect(scope.lists).toEqual(listItemsObject);
+    expect(scope.lists).toEqual("listItemsObject");
 
   });
 
