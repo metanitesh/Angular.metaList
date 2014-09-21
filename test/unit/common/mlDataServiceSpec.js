@@ -1,17 +1,22 @@
-describe('test', function() {
-    
-    beforeEach(module('metaList'));
+describe('data service', function() {
 
-    it('exist', inject(function(mlData) {
-        expect(mlData).toBeDefined();
-    }));
+  beforeEach(module('metaList'));
 
-    it("gerList: should return listItems", inject(function(mlData){
+  it('is sacne', inject(function(mlData) {
+    expect(mlData).toBeDefined();
+  }));
 
-        var expected = [{
-            title : "books"
-        }]
+  it("gerList: should return listItems", inject(function(mlData) {
 
-        expect(mlData.getLists()).toEqual(expected);
-    }))
+    var expected = [{
+      title: "books"
+      }, {
+      title: "movies"
+      }, {
+      title: "life"
+    }];
+
+    expect(mlData.getLists()).toEqual(expected);
+  }))
+  
 });
