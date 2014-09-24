@@ -58,6 +58,19 @@ describe('data service', function() {
     /*then*/
     expect(mockListDb.length).toEqual(1); 
     expect(mockListDb[0]["title"]).not.toEqual("todo"); 
+
   }));
+
+  it("UpdateListById: should update listItem based on Id", inject(function(mlData){
+
+      mlData.updateListById(2, {
+        title : "books"
+      });
+
+      expect(mockListDb[1].title).toEqual("books"); 
+
+  }));
+
+
 
 });

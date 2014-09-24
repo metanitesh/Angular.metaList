@@ -26,10 +26,23 @@ angular.module("metaList").factory('mlData', ["mlLocalStorgae", function(mlLocal
 
       for (var i = listsDb.length - 1; i >= 0; i--) {
         if (listsDb[i]["id"] === id)
-          listsDb.splice(i, 1);
+          listsDb.splice(i, 1);        
       }
 
     }
+
+    var updateListById = function(id, config){
+      
+      var list = getListById(id);
+
+      for(var key in config){
+        if(config.hasOwnProperty(key)){
+          list[key] = config[key];
+        }       
+      }
+
+    };
+
     // var getLists = function() {
     //   return bootStrapData;
     // };
@@ -73,9 +86,8 @@ angular.module("metaList").factory('mlData', ["mlLocalStorgae", function(mlLocal
 
       getLists: getLists,
       getListById: getListById,
-      removeListById: removeListById
-      // // updateList: updateList,
-      // removeList: removeList,
+      removeListById: removeListById,
+      updateListById: updateListById
       // addList: addList
     };
 
