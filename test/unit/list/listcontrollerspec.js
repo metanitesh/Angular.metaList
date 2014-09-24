@@ -23,6 +23,9 @@ describe("list controller", function() {
     },
     addList: function(){
         return;
+    },
+    updateListById: function(){
+        return
     }
   }
 
@@ -60,6 +63,8 @@ describe("list controller", function() {
 
     /*then*/
     expect(scope.activeListId).toEqual(1);
+    expect(scope.enableEdit).toEqual(false);
+
 
   })
 
@@ -87,31 +92,43 @@ describe("list controller", function() {
     /*then*/
     expect(mlDataServiceMock.addList).toHaveBeenCalledWith({title: "bucketList"});
 
+  });
+
+  it(":enableEditMode, should enable edit field for selected list item", function(){
+
+    /*when*/
+    scope.enableEditField(1);
+
+    /*then*/
+    expect(scope.enableEdit).toEqual(1);
   })
-  // it("enableEditMode:, should enable edit mode for selected list item", function(){
 
+  it(":stopPropagation, should stop event bubbling", function(){
 
-  //   /*when*/
-  //   scope.enableEditMode(mlDataMock[0]);
-  //   /*then*/
-  //   expect(scope.enableEdit).toEqual(1);
+    event = {
+        stopPropagation: function(){
+            return;
+        }
+    }
 
-  // })
+    spyOn(event, "stopPropagation");
+    /*when*/
+    scope.stopPropagation(event);
 
-  // it("updateList:, should call mlDataService update method with selected list item", function(){
+    /*then*/
+    expect(event.stopPropagation).toHaveBeenCalled();
+  })
 
-  //    /*setup*/
-  //    var event =  {
-  //     which: 13
-  //    }
+  it(":updateList, should update list title with new title on [enter]", function(){
 
-  //    spyOn(mlDataServiceMock, 'updateList');
+    spyOn(mlDataServiceMock, "updateListById");
 
-  //    /*when*/
-  //   scope.updateList(event, mlDataMock[0]);
+    /*when*/
+    scope.updateList(1, "bucketList")
 
-  //   expect(mlDataServiceMock.updateList).toHaveBeenCalledWith(mlDataMock[0]);
-
-  // })
+    /*then*/
+    expect(mlDataServiceMock.updateListById).toHaveBeenCalledWith(1, {title: "bucketList"});
+    
+  })
 
 });
