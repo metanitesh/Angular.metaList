@@ -63,6 +63,7 @@ describe('data service', function() {
 
   it("UpdateListById: should update listItem based on Id", inject(function(mlData){
 
+      /*when*/
       mlData.updateListById(2, {
         title : "books"
       });
@@ -70,6 +71,34 @@ describe('data service', function() {
       expect(mockListDb[1].title).toEqual("books"); 
 
   }));
+
+  it("genrateId: it should generate 36 digit random ids", inject(function(mlData){
+    
+    /*when*/
+    var id = mlData.genrateId();
+
+    /*then*/
+    expect(id.length).toEqual(36) 
+  }));
+
+  it("addList: should add listItem to listDb", inject(function(mlData){
+
+    /*when*/
+    mlData.addList({
+      title : "grocery"
+    });
+
+    /*then*/
+    expect(mockListDb.length).toEqual(3);     
+    expect(mockListDb[2].title).toEqual("grocery");
+  }))
+
+  it("addList: should throw an error if title is not provided", inject(function(mlData){
+
+    /*then*/
+    expect(function(){mlData.addList({})}).toThrow(new Error('to add a new list item title is required'));
+
+  }))
 
 
 
