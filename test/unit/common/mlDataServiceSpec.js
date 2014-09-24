@@ -1,25 +1,53 @@
 describe('data service', function() {
 
-  beforeEach(module('metaList'));
+  var mockListDb;
 
-  it('is sacne', inject(function(mlData) {
+  beforeEach(function() {
+    mockListDb = [{
+      id: 1,
+      title: "todo"
+      }, {
+      id: 2,
+      title: "movie"
+    }];
+
+  })
+  beforeEach(module('metaList'));
+  beforeEach(module(function($provide) {
+    $provide.value("mlLocalStorgae", {
+      getData: function() {
+        return mockListDb
+      }
+    })
+  }));
+
+  it('is sane', inject(function(mlData) {
+
+    /*then*/
     expect(mlData).toBeDefined();
   }));
 
-  it("gerList: should return listItems", inject(function(mlData) {
+  it("getList: should return collection of list", inject(function(mlData) {
 
-    var expected = [{
-    title: "books",
-    id: 1
-    }, {
-    title: "movies",
-    id: 2
-    }, {
-    title: "life",
-    id: 3
-  }];
+    /*when*/
+    var lists = mlData.getLists();
 
-    expect(mlData.getLists()).toEqual(expected);
+    /*then*/
+    expect(lists).toEqual(mockListDb);
+
+  }));
+
+  it("getListById: should return list Item based on Id", inject(function(mlData){
+
+    /*given*/
+    var expectedList = mockListDb[0];
+
+    /*when*/
+    var list = mlData.getListById(1);
+
+    /*then*/
+    expect(list).toEqual(expectedList);
+    
   }))
-  
+
 });
