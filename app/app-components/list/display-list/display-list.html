@@ -1,7 +1,7 @@
-<span class="icon edit-list icon-list" ng-class= "{'icon-list-active': selected === list.id}" > </span>
-<span class="icon delete-list icon-delete right"  ng-class= "{'icon-delete-active': selected === list.id}" ></span>
-<span class="title"  ng-class= "{'hidden' : enableEdit === list.id}" >{{ list.title }}</span>
-<span class="input-wrapper hidden"  ng-class= "{'show' : enableEdit === list.id}"> 
-    <input maxlength="255" class="edit-list-input " type="text" ng-model="list.title" value='{{list.title}}' ng-keypress= "updateList($event, list)"> 
+<span class="icon edit-list icon-list" ng-class= "{'icon-list-active': activeListId === list.id}" > </span>
+<span class="icon delete-list icon-delete right" ng-class= "{'icon-delete-active': activeListId === list.id}" ng-click="removeList(list.id)"></span>
+<span class="title" ng-click= "selectList($event)" ng-hide="enableEdit === list.id">{{ list.title }}</span>
+<span class="input-wrapper " ng-show="enableEdit === list.id" > 
+    <input maxlength="255" class="edit-list-input " type="text" ng-model="updatedListTitle" ng-click="stopPropagation($event)" ng-enter="updateList(list.id, updatedListTitle)"  >  
 </span>
 
