@@ -2,7 +2,6 @@ angular.module("metaList").factory('mlData', ["mlLocalStorgae", function(mlLocal
 
     "use strict";
 
-
     var listsDb = mlLocalStorgae.getData();
 
      var genrateId = function() {
@@ -14,6 +13,7 @@ angular.module("metaList").factory('mlData', ["mlLocalStorgae", function(mlLocal
     }
 
     var getLists = function() {
+      
       return listsDb;
     }
 
