@@ -20,6 +20,9 @@ describe("list controller", function() {
     },
     removeListById: function() {
       return;
+    },
+    addList: function(){
+        return;
     }
   }
 
@@ -60,7 +63,7 @@ describe("list controller", function() {
 
   })
 
-  it(":removeList, should removeList from listDb", function() {
+  it(":removeList, should remove list from listDb", function() {
 
     /*setup*/
     spyOn(mlDataServiceMock, "removeListById")
@@ -70,6 +73,20 @@ describe("list controller", function() {
 
     /*then*/
     expect(mlDataServiceMock.removeListById).toHaveBeenCalledWith(1);
+  })
+
+  it(":addList, should add new list in listDb", function(){
+
+    /*setup*/
+    spyOn(mlDataServiceMock, "addList");
+    scope.newListTitle = "bucketList";
+
+    /*when*/
+    scope.addList();
+
+    /*then*/
+    expect(mlDataServiceMock.addList).toHaveBeenCalledWith({title: "bucketList"});
+
   })
   // it("enableEditMode:, should enable edit mode for selected list item", function(){
 
