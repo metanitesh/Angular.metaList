@@ -1,6 +1,6 @@
 <ul>
-<li id="list-item" class="list" ng-class= "{'list-active': selected === list.id}"  ng-repeat="list in lists" ng-click='selectList(list)' ng-dblclick="enableEditMode(list)">
-    <display-list></display-list>
-    <add-new-list /> 
+<li id="list-item" class="list" ng-repeat="list in lists" ng-class= "{'list-active': activeListId === list.id}" ng-click='selectList(list.id)' ng-dblclick="enableEditField(list.id, list.title)">
+        <display-list></display-list>
 </li>
 </ul>
+<add-list></add-list>
