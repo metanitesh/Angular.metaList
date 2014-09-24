@@ -48,6 +48,16 @@ describe('data service', function() {
     /*then*/
     expect(list).toEqual(expectedList);
     
-  }))
+  }));
+
+  it("removeListById: should remove list Item based on Id", inject(function(mlData){
+
+    /*when*/
+    mlData.removeListById(1); 
+
+    /*then*/
+    expect(mockListDb.length).toEqual(1); 
+    expect(mockListDb[0]["title"]).not.toEqual("todo"); 
+  }));
 
 });
