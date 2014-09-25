@@ -74,5 +74,11 @@ describe('task service', function() {
 
   }));
 
- 
+  it("removeTaskFrom:, should remove task from given listId", inject(function(mlTaskService){
+
+      mlTaskService.removeTaskFrom(1,11);
+
+      expect(mockListDb[0].tasks.length).toEqual(1);
+      
+  }))
 });
