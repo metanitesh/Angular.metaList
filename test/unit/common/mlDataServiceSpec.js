@@ -72,14 +72,6 @@ describe('data service', function() {
 
   }));
 
-  it("genrateId: it should generate 36 digit random ids", inject(function(mlData){
-    
-    /*when*/
-    var id = mlData.genrateId();
-
-    /*then*/
-    expect(id.length).toEqual(36) 
-  }));
 
   it("addList: should add listItem to listDb", inject(function(mlData){
 
