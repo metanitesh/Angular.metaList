@@ -45,5 +45,34 @@ describe('task service', function() {
     expect(mlTaskService).toBeDefined();
   }));
 
-  
+  it("getTasksFor:, should get all the taskItems for listId", inject(function(mlTaskService){
+
+    /*when*/
+    var tasks = mlTaskService.getTasksFor(1);
+
+    /*then*/
+    expect(tasks).toEqual(mockListDb[0].tasks);
+
+  }));
+
+  it("addTaskTo:, should add a task item to given listId", inject(function(mlTaskService){
+
+    /*setup*/
+    var newTask = {
+      title: "eat"
+    }
+
+    /*when*/
+    mlTaskService.addTaskTo(1, newTask);
+
+    var tasks = mockListDb[0].tasks;
+    var lastIndex = tasks.length-1;
+
+    /*then*/
+    expect(tasks[lastIndex].title).toEqual("eat");
+    expect(tasks[lastIndex].id).toBeDefined();
+
+  }));
+
+ 
 });

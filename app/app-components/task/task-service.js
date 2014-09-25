@@ -6,6 +6,12 @@ angular.module("metaList").factory('mlTaskService', ["mlData", "mlIdGenerator", 
       return mlData.getListById(listId).tasks;
     };
 
+    var addTaskTo = function(listId, config) {
+
+      if (!config.title) {
+        throw "to create a new task title is required";
+      }
+
    
 
     return {
