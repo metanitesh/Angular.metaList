@@ -8,12 +8,13 @@
     "grunt-karma": "*",
     "http-server": "^0.6.1",
     "karma": "~0.12.0",
+    "karma-chrome-launcher": "*",
+    "karma-jasmine": "*",
     "karma-junit-reporter": "^0.2.2",
+    "karma-ng-html2js-preprocessor": "^0.1.0",
+    "karma-phantomjs-launcher": "*",
     "protractor": "~0.20.1",
-    "shelljs": "^0.2.6",
-    "karma-chrome-launcher":"*",
-    "karma-phantomjs-launcher":"*",
-    "karma-jasmine": "*"
+    "shelljs": "^0.2.6"
   },
   "scripts": {
     "postinstall": "bower install",
