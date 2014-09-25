@@ -28,7 +28,7 @@ module.exports = function(config) {
 
     },
 
-    autoWatch: true,
+    autoWatch: false,
 
     browsers: ['PhantomJS'],
 
