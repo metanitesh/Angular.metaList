@@ -4,7 +4,8 @@ angular.module("metaList").directive("list", function(){
         restrict: "E",
         replace: false,
         templateUrl: "app-components/list/list.html",
-        controller: 'mlListCtrl'
+        controller: 'mlListCtrl',
+        scope:true
     }    
 
 })
