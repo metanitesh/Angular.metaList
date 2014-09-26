@@ -1,15 +1,15 @@
-metaList.controller('mlListCtrl', ['$scope', '$location', 'mlData', function($scope, $location, mlData) {
+metaList.controller('mlListCtrl', ['$scope', 'mlRouteParam', 'mlData', function($scope, mlRouteParam, mlData) {
 
     $scope.lists = mlData.getLists();
 
     $scope.$watch(function() {
-      return $location.path();
+      return mlRouteParam.getParam().listId;
     }, function(value) {
-        $scope.activeListId = value.slice(1);        
+        $scope.activeListId = mlRouteParam.getParam().listId;        
     })
 
     $scope.selectList = function(id) {
-      $location.path(id);
+      mlRouteParam.setParam(id);
       $scope.enableEdit = false;
       return false;
     }
