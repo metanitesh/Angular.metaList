@@ -29,11 +29,15 @@ describe("list controller", function() {
   
 
   var mlTaskServiceMock = {
+
    getTasksFor: function(id){
     return tasksMock;
    },
    removeTaskFrom: function(listId, taskId){
     return ;
+   },
+   addTaskTo: function(listId, config){
+    return
    }
   }
 
@@ -72,6 +76,25 @@ describe("list controller", function() {
     scope.removeTask(2);
 
     expect(mlTaskServiceMock.removeTaskFrom).toHaveBeenCalledWith(1, 2)
+
+  });
+
+  it("checkTask, should mark task as completed", function(){
+
+  })
+
+  it("addTask, should add new task", function(){
+
+      spyOn(mlTaskServiceMock, 'addTaskTo');
+
+      var config = {
+        title: "get out of house"
+      };
+
+      scope.listId = 1;
+      scope.addTask("get out of house");
+
+      expect(mlTaskServiceMock.addTaskTo).toHaveBeenCalledWith(1, config)
 
   })
 });
