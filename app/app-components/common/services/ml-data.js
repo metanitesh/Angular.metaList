@@ -39,7 +39,8 @@ angular.module("metaList").factory('mlData', ["mlLocalStorgae", "mlIdGenerator",
       var id = mlIdGenerator.getId();
       var obj = {
         id: id,
-        title : ""
+        title : "",
+        tasks:[]
       };
 
       for(var key in config){ 

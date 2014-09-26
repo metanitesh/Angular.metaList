@@ -39,7 +39,7 @@ describe("list controller", function() {
    addTaskTo: function(listId, config){
     return;
    },
-   checkTask: function(listId, taskId){
+   checkTaskFrom: function(listId, taskId){
     return;
    }
   }
@@ -83,12 +83,12 @@ describe("list controller", function() {
   });
 
   it("checkTask, should mark task as completed", function(){
-      spyOn(mlTaskServiceMock, 'checkTask');
+      spyOn(mlTaskServiceMock, 'checkTaskFrom');
 
       scope.listId = 1;
       scope.checkTask(2);
 
-      expect(mlTaskServiceMock.checkTask).toHaveBeenCalledWith(1, 2)
+      expect(mlTaskServiceMock.checkTaskFrom).toHaveBeenCalledWith(1, 2)
 
   })
 

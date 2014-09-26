@@ -28,7 +28,7 @@ metaList.controller('mlTaskCtrl', ['$scope', '$location', 'mlTaskService', funct
 
     $scope.checkTask = function(taskId){
         
-        mlTaskService.checkTask($scope.listId, taskId);
+        mlTaskService.checkTaskFrom($scope.listId, taskId);
     }
     // $scope.removeTask = function(taskId){
     //     tasks.removeId

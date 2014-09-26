@@ -1,11 +1,17 @@
-metaList.controller('mlListCtrl', ['$scope', 'mlData', function($scope, mlData) {
+metaList.controller('mlListCtrl', ['$scope', '$location', 'mlData', function($scope, $location, mlData) {
 
     $scope.lists = mlData.getLists();
 
+    $scope.$watch(function() {
+      return $location.path();
+    }, function(value) {
+        $scope.activeListId = value.slice(1);        
+    })
 
     $scope.selectList = function(id) {
-      $scope.activeListId = id;
+      $location.path(id);
       $scope.enableEdit = false;
+      return false;
     }
 
     $scope.removeList = function(id) {
@@ -23,6 +29,7 @@ metaList.controller('mlListCtrl', ['$scope', 'mlData', function($scope, mlData) 
       mlData.addList(config);
 
       $scope.newListTitle = "";
+      
     }
 
     $scope.enableEditField = function(id) {
@@ -34,18 +41,17 @@ metaList.controller('mlListCtrl', ['$scope', 'mlData', function($scope, mlData) 
     }
 
     $scope.updateList = function(id, updatedListTitle) {
-              
+
       if (!updatedListTitle) {
         return;
       }
 
       var config = {};
       config.title = updatedListTitle;
-      
+
       mlData.updateListById(id, config);
       $scope.enableEdit = false
-
+      
     }
-   
-}])
 
+}])
