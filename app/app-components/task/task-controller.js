@@ -25,6 +25,11 @@ metaList.controller('mlTaskCtrl', ['$scope', '$location', 'mlTaskService', funct
         $scope.newTaskTitle="";
     
     }
+
+    $scope.checkTask = function(taskId){
+        
+        mlTaskService.checkTask($scope.listId, taskId);
+    }
     // $scope.removeTask = function(taskId){
     //     tasks.removeId
     // }   

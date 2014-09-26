@@ -34,10 +34,13 @@ describe("list controller", function() {
     return tasksMock;
    },
    removeTaskFrom: function(listId, taskId){
-    return ;
+    return;
    },
    addTaskTo: function(listId, config){
-    return
+    return;
+   },
+   checkTask: function(listId, taskId){
+    return;
    }
   }
 
@@ -80,6 +83,12 @@ describe("list controller", function() {
   });
 
   it("checkTask, should mark task as completed", function(){
+      spyOn(mlTaskServiceMock, 'checkTask');
+
+      scope.listId = 1;
+      scope.checkTask(2);
+
+      expect(mlTaskServiceMock.checkTask).toHaveBeenCalledWith(1, 2)
 
   })
 
