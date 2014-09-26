@@ -14,7 +14,9 @@ angular.module("metaList").factory('mlTaskService', ["mlData", "mlIdGenerator", 
 
       var newTask = {
         id: mlIdGenerator.getId(),
-        title: config.title
+        title: config.title,
+
+        done: false
       };
 
       var tasks = getTaskFor(listId);
@@ -29,10 +31,20 @@ angular.module("metaList").factory('mlTaskService', ["mlData", "mlIdGenerator", 
       }
     }
 
+    var checkTaskFrom = function(listId, taskId) {
+      var tasks = getTaskFor(listId);
+
+      _.findWhere(tasks, {
+        id: taskId
+      }).done = true;
+      
+    }
+
     return {
       getTasksFor: getTaskFor,
       addTaskTo: addTaskTo,
-      removeTaskFrom: removeTaskFrom
+      removeTaskFrom: removeTaskFrom,
+      checkTaskFrom: checkTaskFrom
     };
 
 }]);

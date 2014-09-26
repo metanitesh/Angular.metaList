@@ -9,20 +9,24 @@ describe('task service', function() {
       title: "todo",
       tasks: [{
         id: 11,
-        title: "clean house"
+        title: "clean house",
+        done:false
         }, {
         id: 12,
-        title: "sleep"
+        title: "sleep",
+        done:false
       }]
       }, {
       id: 2,
       title: "movie",
       tasks: [{
         id: 21,
-        title: "batman"
+        title: "batman",
+        done:false
         }, {
         id: 22,
-        title: "harry Potter"
+        title: "harry Potter",
+        done:false
       }]
       }
     ];
@@ -79,6 +83,14 @@ describe('task service', function() {
       mlTaskService.removeTaskFrom(1,11);
 
       expect(mockListDb[0].tasks.length).toEqual(1);
+      
+  }))
+
+   it("checkTaskFrom:, should remove task from given listId", inject(function(mlTaskService){
+
+      mlTaskService.checkTaskFrom(1,11);
+
+      expect(mockListDb[0].tasks[0].done).toEqual(true);
       
   }))
 });
