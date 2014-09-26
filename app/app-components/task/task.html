@@ -1,0 +1,16 @@
+<add-task></add-task>
+<div class="task-group" >
+    <ul class="task-remaining">
+        <li class="task-item" ng-repeat="task in tasks" ng-if="task.done == false">    
+            <display-task></display-task> 
+        </li>
+    </ul>
+    <h1 class="text-color-flip">completed task</h1>
+    <ul class="task-complete">
+      <li class="task-item" ng-repeat="task in tasks" ng-if="task.done == true">    
+        <display-task></display-task>
+    </li>
+</ul>
+
+
+</div>
