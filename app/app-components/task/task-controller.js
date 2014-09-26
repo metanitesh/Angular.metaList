@@ -3,22 +3,26 @@ metaList.controller('mlTaskCtrl', ['$scope', '$location', 'mlTaskService', funct
     $scope.$watch(function() {
       return $location.path();
     }, function(value) {
+        $scope.listId = value.slice(1);
         $scope.tasks = mlTaskService.getTasksFor(value.slice(1));        
     })
 
     $scope.selectTask = function(taskId){
-         $location.path(taskId);
+         // $location.path(taskId);
     }
 
     $scope.removeTask = function(taskId){
-
-    }   
-
-    $scope.checkTask = function(){
-
+        mlTaskService.removeTaskFrom($scope.listId, taskId);
     }
+    // $scope.removeTask = function(taskId){
+    //     tasks.removeId
+    // }   
 
-    $scope.addTask = function(){
+    // $scope.checkTask = function(){
 
-    }
+    // }
+
+    // $scope.addTask = function(){
+
+    // }
 }])
