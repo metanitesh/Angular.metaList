@@ -1,6 +1,6 @@
 module.exports = function(config) {
   config.set({
-    basePath: '',
+    basePath: '../',
 
     frameworks: ['jasmine'],
 
@@ -28,7 +28,7 @@ module.exports = function(config) {
 
     },
 
-
+    singleRun: true,
 
     browsers: ['PhantomJS'],
 
