@@ -11,6 +11,7 @@ describe('task service', function() {
         id: 11,
         title: "clean house",
         comments: ["will do this weekend"],
+        content: "list of work",
         done:false
         }, {
         id: 12,
@@ -108,6 +109,14 @@ describe('task service', function() {
       mlTaskService.addComment(1, 11, "done");
 
       expect(mockListDb[0].tasks[0].comments.length).toEqual(2);
+      
+  }))
+
+   it("updateContent:, should add content to given task", inject(function(mlTaskService){
+
+      mlTaskService.updateContent(1, 11, "new content");
+
+      expect(mockListDb[0].tasks[0].content).toEqual("new content");
       
   }))
 });
