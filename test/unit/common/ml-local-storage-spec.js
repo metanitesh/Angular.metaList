@@ -18,11 +18,18 @@ describe('local storage service', function() {
 
   it("should create and intialize a local storage if there is none", inject(function(mlLocalStorgae){
       
-      
-
       mlLocalStorgae.init("angularMetaListTest", initData);
 
       expect(localStorage.angularMetaListTest).toEqual("{\"title\":\"todo\"}");
+  }))
+
+  it("loadLocal, should load data from localStorage", inject(function(mlLocalStorgae){
+      
+      mlLocalStorgae.init("angularMetaListTest", initData);
+      var expected = mlLocalStorgae.loadLocal("angularMetaListTest");
+
+
+      expect(expected).toEqual({title: "todo"});
   }))
 
   //   it('is should load data from local storage', inject(function(mlLocalStorgae) {
