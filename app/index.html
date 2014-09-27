@@ -42,6 +42,27 @@
         </div>
         <div id="main-content" class="">
             <task></task>
+        </div>
+        <div id="detail" class="hide-mobile" ng-controller=mlDetailCtrl>
+
+            <div class="panel">
+                <div class="panel-title">
+                    <span>Task Detail</span>
+                </div>
+
+                <h1 class="panel-heading">
+                    <span>content</span>
+                </h1>
+               
+
+                <note></note>        
+
+                <h1 class="panel-heading">
+                    <span>comments</span>
+                </h1>
+
+                <comment></comment>
+            </div>
         </div>        
     </div>
 
@@ -70,7 +91,11 @@
     <script src="app-components/task/task-directive.js"></script>
     <script src="app-components/task/display-task/display-task-directive.js"></script>
     <script src="app-components/task/add-task/add-task-directive.js"></script>
-
+    
+    <script src="app-components/detail/detail-controller.js"></script>    
+    <script src="app-components/detail/note/note-directive.js"></script>
+    <script src="app-components/detail/comment/comment-directive.js"></script>
+    
 
 </body>
 
