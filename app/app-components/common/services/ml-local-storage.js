@@ -71,11 +71,16 @@ angular.module('metaList').factory("mlLocalStorgae", function() {
     }
   ]
 
+  var init = function(storageName, initData){
+    localStorage[storageName] = JSON.stringify(initData);  
+  }
+
   var getData = function() {
     return bootstrapData;
   }
 
   return {
-    getData: getData
+    getData: getData,
+    init: init
   }
 })
