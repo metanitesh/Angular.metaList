@@ -49,12 +49,17 @@ angular.module("metaList").factory('mlTaskService', ["mlData", "mlIdGenerator", 
       })
     }
 
+    var addComment = function(listId, taskId, newComment){
+      var task =  getTaskById(listId, taskId)
+      task.comments.push(newComment);
+    }
     return {
       getTasksFor: getTaskFor,
       addTaskTo: addTaskTo,
       removeTaskFrom: removeTaskFrom,
       checkTaskFrom: checkTaskFrom,
-      getTaskById: getTaskById
+      getTaskById: getTaskById,
+      addComment: addComment
     };
 
 }]);
