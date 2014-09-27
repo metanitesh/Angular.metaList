@@ -25,6 +25,7 @@ angular.module("metaList").factory('mlTaskService', ["mlData", "mlIdGenerator", 
 
     var removeTaskFrom = function(listId, taskId) {
       var tasks = getTaskFor(listId);
+
       for (var i = tasks.length - 1; i >= 0; i--) {
         if (tasks[i]["id"] === taskId)
           tasks.splice(i, 1);
@@ -37,14 +38,23 @@ angular.module("metaList").factory('mlTaskService', ["mlData", "mlIdGenerator", 
       _.findWhere(tasks, {
         id: taskId
       }).done = true;
-      
+
+    }
+
+    var getTaskById = function(listId, taskId) {
+      var tasks = getTaskFor(listId);
+
+      return _.findWhere(tasks, {
+        id: taskId
+      })
     }
 
     return {
       getTasksFor: getTaskFor,
       addTaskTo: addTaskTo,
       removeTaskFrom: removeTaskFrom,
-      checkTaskFrom: checkTaskFrom
+      checkTaskFrom: checkTaskFrom,
+      getTaskById: getTaskById
     };
 
 }]);

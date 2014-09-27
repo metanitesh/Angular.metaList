@@ -93,4 +93,12 @@ describe('task service', function() {
       expect(mockListDb[0].tasks[0].done).toEqual(true);
       
   }))
+
+   it("getTaskById:, should get by TaskId", inject(function(mlTaskService){
+
+      mlTaskService.getTaskById(1,11);
+
+      expect(mockListDb[0].tasks[0].title).toEqual("clean house");
+      
+  }))
 });

@@ -1,7 +1,7 @@
 <add-task></add-task>
 <div class="task-group" >
     <ul class="task-remaining">
-        <li class="task-item" ng-repeat="task in tasks" ng-class="{'task-done': task.done}" >    
+        <li class="task-item" ng-repeat="task in tasks" ng-class="{'task-done': task.done, 'task-item-selected':activeTaskId == task.id}" ng-click="selectTask(task.id)">    
             <display-task></display-task> 
         </li>
     </ul>

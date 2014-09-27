@@ -1,14 +1,22 @@
-metaList.controller('mlTaskCtrl', ['$scope', '$location', 'mlTaskService', function($scope, $location, mlTaskService) {
+metaList.controller('mlTaskCtrl', ['$scope', 'mlRouteParam', 'mlTaskService', function($scope, mlRouteParam, mlTaskService) {
 
     $scope.$watch(function() {
-      return $location.path();
-    }, function(value) {
-        $scope.listId = value.slice(1);
-        $scope.tasks = mlTaskService.getTasksFor(value.slice(1));        
+      return mlRouteParam.getParam().listId;
+    }, function() {
+        $scope.listId = mlRouteParam.getParam().listId;
+        $scope.activeTaskId = mlRouteParam.getParam().taskId;
+        $scope.tasks = mlTaskService.getTasksFor(mlRouteParam.getParam().listId);        
     })
 
+    $scope.$watch(function() {
+      return mlRouteParam.getParam().taskId;
+    }, function() {
+        $scope.activeTaskId = mlRouteParam.getParam().taskId;
+    })
+
+
     $scope.selectTask = function(taskId){
-         // $location.path(taskId);
+        mlRouteParam.setParam($scope.listId, taskId); 
     }
 
     $scope.removeTask = function(taskId){
