@@ -1,6 +1,6 @@
 <div id="note-view">
   <div class="note-container">
-    <textarea class="note" value="{{task.content}}">{{task.content}}</textarea>
+    <textarea class="note" ng-model="contentText" ng-keypress="updateContent(contentText)"></textarea>
 </div>                  
 </div>
 
