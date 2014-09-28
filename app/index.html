@@ -42,6 +42,7 @@
         </div>
         <div id="main-content" class="">
             <task></task>
+
         </div>
         <div id="detail" class="hide-mobile" ng-controller=mlDetailCtrl>
 
@@ -63,7 +64,8 @@
 
                 <comment></comment>
             </div>
-        </div>        
+        </div>    
+        <actionbar></actionbar>    
     </div>
 
     
@@ -76,6 +78,7 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="app-components/app.js"></script>
     <script src="app-components/common/services/ml-id-generator.js"></script>
+    <script src="app-components/common/services/ml-bootstarp-data.js"></script>
     <script src="app-components/common/services/ml-local-storage.js"></script>
     <script src="app-components/common/services/ml-data.js"></script>
     <script src="app-components/common/services/ml-route-param.js"></script>
@@ -92,6 +95,10 @@
     <script src="app-components/task/display-task/display-task-directive.js"></script>
     <script src="app-components/task/add-task/add-task-directive.js"></script>
     
+
+    <script src="app-components/actionbar/actionbar-directive.js"></script>    
+    <script src="app-components/actionbar/actionbar-controller.js"></script>    
+
     <script src="app-components/detail/detail-controller.js"></script>    
     <script src="app-components/detail/note/note-directive.js"></script>
     <script src="app-components/detail/comment/comment-directive.js"></script>
