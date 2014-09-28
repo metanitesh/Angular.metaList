@@ -1,7 +1,7 @@
 angular.module("metaList").factory('mlData', ["mlLocalStorgae", "mlIdGenerator", function(mlLocalStorgae, mlIdGenerator) {
 
     "use strict";
-
+    
     var listsDb = mlLocalStorgae.getData();
 
     var getLists = function() {      
