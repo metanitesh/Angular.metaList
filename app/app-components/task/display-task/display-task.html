@@ -1,5 +1,5 @@
-<span class="icon icon-task-checkbox check-task" ng-click= "checkTask(task.id)"></span>
+<span class="icon icon-task-checkbox check-task" ng-class="{'icon-task-checked': task.done}" ng-click= "checkTask(task.id)"></span>
 <span class="icon icon-task-separator"></span>
-<span class="task-title">{{task.title}}
+<span class="task-title">{{task.title}} {{task.done}}
 </span>
 <span class="icon icon-delete delete-task right" ng-click= 'removeTask(task.id)'></span>
