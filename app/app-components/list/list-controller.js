@@ -1,12 +1,16 @@
-metaList.controller('mlListCtrl', ['$scope', 'mlRouteParam', 'mlData', function($scope, mlRouteParam, mlData) {
+metaList.controller('mlListCtrl', ['$scope', 'mlRouteParam', 'mlListService', function($scope, mlRouteParam, mlListService) {
 
-    $scope.lists = mlData.getLists();
+    var listIdWatcher = function() {
+      return mlRouteParam.getListId();
+    }
 
-    $scope.$watch(function() {
-      return mlRouteParam.getParam().listId;
-    }, function(value) {
-        $scope.activeListId = mlRouteParam.getParam().listId;        
-    })
+    var listIdListener = function(value) {
+       $scope.activeListId = value;        
+    }
+
+    $scope.$watch(listIdWatcher, listIdListener);
+    
+    $scope.lists = mlListService.getLists();
 
     $scope.selectList = function(id) {
       mlRouteParam.setParam(id);
@@ -15,7 +19,7 @@ metaList.controller('mlListCtrl', ['$scope', 'mlRouteParam', 'mlData', function(
     }
 
     $scope.removeList = function(id) {
-      mlData.removeListById(id);
+      mlListService.removeListById(id);
     }
 
     $scope.addList = function() {
@@ -26,7 +30,7 @@ metaList.controller('mlListCtrl', ['$scope', 'mlRouteParam', 'mlData', function(
 
       config = {}
       config.title = $scope.newListTitle;
-      mlData.addList(config);
+      mlListService.addList(config);
 
       $scope.newListTitle = "";
       
@@ -46,10 +50,7 @@ metaList.controller('mlListCtrl', ['$scope', 'mlRouteParam', 'mlData', function(
         return;
       }
 
-      var config = {};
-      config.title = updatedListTitle;
-
-      mlData.updateListById(id, config);
+      mlListService.updateListById(id, updatedListTitle);
       $scope.enableEdit = false
       
     }

@@ -43,7 +43,7 @@ describe("list controller", function() {
   beforeEach(function() {
     controller("mlListCtrl", {
       $scope: scope,
-      mlData: mlDataServiceMock
+      mlListService: mlDataServiceMock
     })
   })
 
@@ -59,12 +59,12 @@ describe("list controller", function() {
 
 
     /*when*/
+
     scope.selectList(1);
 
     /*then*/
     // expect(scope.activeListId).toEqual(1);
     expect(scope.enableEdit).toEqual(false);
-
 
   })
 
@@ -127,7 +127,7 @@ describe("list controller", function() {
     scope.updateList(1, "bucketList")
 
     /*then*/
-    expect(mlDataServiceMock.updateListById).toHaveBeenCalledWith(1, {title: "bucketList"});
+    expect(mlDataServiceMock.updateListById).toHaveBeenCalledWith(1,"bucketList");
     
   })
 
