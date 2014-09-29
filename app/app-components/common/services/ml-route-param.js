@@ -31,8 +31,19 @@ angular.module("metaList").factory('mlRouteParam', ["$location", function($locat
     $location.path(str)
   }
 
+  /*helper methods for wathcer*/
+  var getListId = function(){
+     return $location.path().split("/")[1]; 
+  }
+
+  var getTaskId = function(){
+     return $location.path().split("/")[2]; 
+  }
+
   return {
      getParam: getParam,
-     setParam: setParam      
+     setParam: setParam,
+     getListId: getListId,
+     getTaskId: getTaskId     
   }
 }])

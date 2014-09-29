@@ -18,7 +18,7 @@ describe('data service', function() {
     expect(mlRouteParam).toBeDefined();
   }));
 
-  it("getRouteParam, should should get listId and taskId in return Object", inject(function(mlRouteParam){
+  it("getRouteParam, should  get listId and taskId in return Object", inject(function(mlRouteParam){
 
     var params = mlRouteParam.getParam();
 
@@ -35,4 +35,21 @@ describe('data service', function() {
 
     expect($location.path).toHaveBeenCalledWith("/1/2")
   }))
+
+
+  it("getListId, should get listId from location", inject(function($location, mlRouteParam){
+    
+     var listId = mlRouteParam.getListId();
+     expect(listId).toEqual("1")
+
+  }))
+
+  it("getTaskId, should get taskId from location", inject(function($location, mlRouteParam){
+    
+     var taskId = mlRouteParam.getTaskId();
+     expect(taskId).toEqual("12")
+     
+  }))
+
+
 });
