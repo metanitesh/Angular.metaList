@@ -12,44 +12,44 @@ describe('local storage service', function() {
     };
   })
 
-  it('is sane', inject(function(mlLocalStorgae) {
+  it('is sane', inject(function(mlLocalStorage) {
 
     /*then*/
-    expect(mlLocalStorgae).toBeDefined();
+    expect(mlLocalStorage).toBeDefined();
   }));
 
-  it("hasLocal, should check if localStorage exist", inject(function(mlLocalStorgae) {
+  it("hasLocal, should check if localStorage exist", inject(function(mlLocalStorage) {
 
     /*then*/
-    expect(mlLocalStorgae.hasLocal("angularMetaListTest")).toEqual(false)
+    expect(mlLocalStorage.hasLocal("angularMetaListTest")).toEqual(false)
   }))
 
-  it("saveLocal, can save data to localStorage", inject(function(mlLocalStorgae) {
+  it("saveLocal, can save data to localStorage", inject(function(mlLocalStorage) {
 
     /*then*/
     expect(function() {
-      mlLocalStorgae.saveLocal(testData)
+      mlLocalStorage.saveLocal(testData)
     }).toThrow(new Error('set storageName using setStorageName(), before fetching data'));
 
      /*when*/
-    mlLocalStorgae.setStorageName('angularMetaListTest');
-    mlLocalStorgae.saveLocal(testData);
+    mlLocalStorage.setStorageName('angularMetaListTest');
+    mlLocalStorage.saveLocal(testData);
 
     /*then*/
     expect(localStorage.angularMetaListTest).toEqual("{\"title\":\"todo\"}");
   }));
 
-  it("loadLocal, can load data from localStorage", inject(function(mlLocalStorgae) {
+  it("loadLocal, can load data from localStorage", inject(function(mlLocalStorage) {
 
     /*then*/
     expect(function() {
-      mlLocalStorgae.loadLocal()
+      mlLocalStorage.loadLocal()
     }).toThrow(new Error('set storageName using setStorageName(), before fetching data'));
 
      /*when*/
-    mlLocalStorgae.setStorageName('angularMetaListTest');
-    mlLocalStorgae.saveLocal(testData);
-    var expectedData = mlLocalStorgae.loadLocal();
+    mlLocalStorage.setStorageName('angularMetaListTest');
+    mlLocalStorage.saveLocal(testData);
+    var expectedData = mlLocalStorage.loadLocal();
 
     /*then*/
     expect(expectedData).toEqual(testData);
