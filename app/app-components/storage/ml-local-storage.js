@@ -1,4 +1,4 @@
-angular.module('metaList').factory("mlLocalStorgae", ["mlBootstrapData", function(mlBootstrapData) {
+angular.module('metaList').factory("mlLocalStorage", function() {
 
     var storageName;
 
@@ -30,4 +30,4 @@ angular.module('metaList').factory("mlLocalStorgae", ["mlBootstrapData", functio
       loadLocal: loadLocal,
       saveLocal: saveLocal
     }
-}])
+})
