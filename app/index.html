@@ -33,18 +33,20 @@
         </div> 
     </div>
 
-    <div class="interface">
+    <div class="interface" ng-controller="mlAppController">
         <div id="sidebar">
             <div class="logo-container">
                 <span>metalist</span>
             </div>
             <list></list>
         </div>
+        
         <div id="main-content" class="">
             <task></task>
 
         </div>
-        <div id="detail" class="hide-mobile" ng-controller=mlDetailCtrl>
+         
+        <div id="detail" class="hide-mobile">
 
             <div class="panel">
                 <div class="panel-title">
@@ -54,7 +56,7 @@
                 <h1 class="panel-heading">
                     <span>content</span>
                 </h1>
-               
+
 
                 <note></note>        
 
@@ -65,7 +67,8 @@
                 <comment></comment>
             </div>
         </div>    
-        <actionbar></actionbar>    
+        <!-- <actionbar></actionbar> -->
+            
     </div>
 
     
@@ -76,34 +79,45 @@
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    
     <script src="app-components/app.js"></script>
-    <script src="app-components/common/services/ml-id-generator.js"></script>
-    <script src="app-components/common/services/ml-bootstarp-data.js"></script>
-    <script src="app-components/common/services/ml-local-storage.js"></script>
-    <script src="app-components/common/services/ml-data.js"></script>
+    <script src="app-components/ml-app-controller.js"></script>
+
     <script src="app-components/common/services/ml-route-param.js"></script>
+    <script src="app-components/common/services/ml-state.js"></script>
+    <script src="app-components/common/services/ml-id-generator.js"></script>
     <script src="app-components/common/directives/enter-directive.js"></script>
+    
+    <script src="app-components/storage/ml-app-storage.js"></script>    
+    <script src="app-components/storage/ml-bootstarp-data.js"></script>    
+    <script src="app-components/storage/ml-local-storage.js"></script>    
 
     <script src="app-components/list/list-controller.js"></script>
     <script src="app-components/list/list-directive.js"></script>
+    <script src="app-components/list/list-service.js"></script>
+
     <script src="app-components/list/display-list/display-list-directive.js"></script>
     <script src="app-components/list/add-list/add-list-directive.js"></script>
-
+    
+    
     <script src="app-components/task/task-service.js"></script>
     <script src="app-components/task/task-controller.js"></script>
     <script src="app-components/task/task-directive.js"></script>
+    
     <script src="app-components/task/display-task/display-task-directive.js"></script>
     <script src="app-components/task/add-task/add-task-directive.js"></script>
+<!--
+    <script src="app-components/detail/detail-controller.js"></script>    -->
     
-
-    <script src="app-components/actionbar/actionbar-directive.js"></script>    
-    <script src="app-components/actionbar/actionbar-controller.js"></script>    
-
-    <script src="app-components/detail/detail-controller.js"></script>    
     <script src="app-components/detail/note/note-directive.js"></script>
-    <script src="app-components/detail/comment/comment-directive.js"></script>
+    <script src="app-components/detail/note/note-controller.js"></script>
     
-
+    
+    <script src="app-components/detail/comment/comment-directive.js"></script>
+    <script src="app-components/detail/comment/comment-controller.js"></script>
+    <!--   
+    <script src="app-components/actionbar/actionbar-controller.js"></script>
+    -->
 </body>
 
 </html>
