@@ -1,16 +1,14 @@
-angular.module("metaList").factory('mlTaskService', ["mlListService", "mlIdGenerator", function(mlListService, mlIdGenerator) {
+angular.module("metaList").factory('mlTaskService', [ "mlIdGenerator", function( mlIdGenerator) {
 
     "use strict";
     var tasks;
 
-    var setParentListTasks = function(listId){
-      tasks = mlListService.getListById(listId).tasks;
+    var setTasksFromParentList = function(mlTasks){
+      tasks = mlTasks;
       return tasks;
     } 
 
-
     var getTasks= function() {
-
       return tasks;
     };
 
@@ -61,7 +59,7 @@ angular.module("metaList").factory('mlTaskService', ["mlListService", "mlIdGener
     }
 
     return {
-      setParentListTasks: setParentListTasks,
+      setTasksFromParentList: setTasksFromParentList,
       getTasks: getTasks,
       addTask: addTask,
       removeTask: removeTask,
