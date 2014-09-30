@@ -1,4 +1,9 @@
 'use strict';
 
-var metaList = angular.module('metaList', ['ngRoute']);
+angular.module('metaList', ['ngRoute']).run(["mlStorage", function(mlStorage){
+    
+    // mlStorage.setDbName("angular.MetaList");
+    // mlStorage.init();
+    
+}]);
 
