@@ -12,7 +12,7 @@ angular.module("metaList").factory('mlState', ["mlListService", "mlTaskService",
       var currentList = mlListService.getListById(listId);
      
       states.currentList = currentList;
-      states.tasks = mlTaskService.setTasksFromParentList(currentList.tasks);
+      states.tasks = mlTaskService.setTasks(currentList.tasks);
       
       states.currentTask = "";
       states.currentContent = "";

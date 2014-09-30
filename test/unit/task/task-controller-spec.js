@@ -1,10 +1,13 @@
-describe("list controller", function() {
+describe("task controller", function() {
 
   var scope;
   var controller;
 
- 
-   var tasksMock = [
+
+  var listMock = {
+    title: "todo",
+    id: 1,
+    tasks: [
       {
         "id": "6FB00942-3020-4DF7-8080-5881B4B17442",
         "title": "clean house",
@@ -26,22 +29,20 @@ describe("list controller", function() {
         "content": "1. eggs\n2. apples\n3. bread \n4. wine",
         "done": false
     }]
-  
+  }
+
 
   var mlTaskServiceMock = {
 
-   getTasksFor: function(id){
-    return tasksMock;
-   },
-   removeTaskFrom: function(listId, taskId){
-    return;
-   },
-   addTaskTo: function(listId, config){
-    return;
-   },
-   checkTaskFrom: function(listId, taskId){
-    return;
-   }
+    removeTask: function(taskId) {
+      return;
+    },
+    addTask: function(listId, config) {
+      return;
+    },
+    checkTask: function(listId, taskId) {
+      return;
+    }
   }
 
   beforeEach(module("metaList"));
@@ -63,47 +64,60 @@ describe("list controller", function() {
     })
   })
 
-  it(":selectTask, should select current task", function() {
+  it(":selectTask, should update location with given taskId", inject(function(mlRouteParam) {
 
+    
+    spyOn(mlRouteParam, 'setTaskId');
+
+    /*when*/
+    scope.selectTask(1)
+    
+    /*then*/
+    expect(mlRouteParam.setTaskId).toHaveBeenCalledWith(1);
+
+  }));
+
+  it("removeTask, should remove task", function() {
+
+    /*setup*/
+    spyOn(mlTaskServiceMock, 'removeTask');
+
+    /*when*/
+    scope.removeTask(1);
 
     /*then*/
-    // expect(scope.lists).toEqual(ListDbMock);
+    expect(mlTaskServiceMock.removeTask).toHaveBeenCalledWith(1)
 
   });
 
-  it("removeTask, should remove task", function(){
 
-    spyOn(mlTaskServiceMock, 'removeTaskFrom');
+  it("addTask, should add new task", function() {
 
-    scope.listId = 1;
-    scope.removeTask(2);
+    spyOn(mlTaskServiceMock, 'addTask');
 
-    expect(mlTaskServiceMock.removeTaskFrom).toHaveBeenCalledWith(1, 2)
+    var config = {
+      title: "get out of house"
+    };
 
-  });
+    
+    scope.addTask("get out of house");
 
-  it("checkTask, should mark task as completed", function(){
-      spyOn(mlTaskServiceMock, 'checkTaskFrom');
-
-      scope.listId = 1;
-      scope.checkTask(2);
-
-      expect(mlTaskServiceMock.checkTaskFrom).toHaveBeenCalledWith(1, 2)
+    expect(mlTaskServiceMock.addTask).toHaveBeenCalledWith(config)
+    expect(scope.newTaskTitle).toEqual("");
 
   })
 
-  it("addTask, should add new task", function(){
+  it("checkTask, should mark task as completed", function() {
+    
+    /*setup*/  
+    spyOn(mlTaskServiceMock, 'checkTask');
 
-      spyOn(mlTaskServiceMock, 'addTaskTo');
+    /*when*/
+    scope.checkTask(2);
 
-      var config = {
-        title: "get out of house"
-      };
-
-      scope.listId = 1;
-      scope.addTask("get out of house");
-
-      expect(mlTaskServiceMock.addTaskTo).toHaveBeenCalledWith(1, config)
+    /*then*/
+    expect(mlTaskServiceMock.checkTask).toHaveBeenCalledWith(2)
 
   })
+
 });
