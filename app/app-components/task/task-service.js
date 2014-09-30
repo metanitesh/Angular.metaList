@@ -3,7 +3,7 @@ angular.module("metaList").factory('mlTaskService', [ "mlIdGenerator", function(
     "use strict";
     var tasks;
 
-    var setTasksFromParentList = function(mlTasks){
+    var setTasks = function(mlTasks){
       tasks = mlTasks;
       return tasks;
     } 
@@ -59,7 +59,7 @@ angular.module("metaList").factory('mlTaskService', [ "mlIdGenerator", function(
     }
 
     return {
-      setTasksFromParentList: setTasksFromParentList,
+      setTasks: setTasks,
       getTasks: getTasks,
       addTask: addTask,
       removeTask: removeTask,

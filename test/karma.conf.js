@@ -23,7 +23,7 @@ module.exports = function(config) {
       'test/unit/common/*.js',
 
       'test/unit/list/*.js',
-      // 'test/unit/task/*.js',
+      'test/unit/task/*.js',
 
       'app/app-components/**/*.html',
     ],

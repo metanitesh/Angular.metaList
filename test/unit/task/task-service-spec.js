@@ -4,38 +4,25 @@ describe('task service', function() {
 
   beforeEach(function() {
 
-    mockList = {
-      id: 1,
-      title: "todo",
-      tasks: [{
-        id: 11,
-        title: "clean house",
-        comments: ["will do this weekend"],
-        content: "list of work",
-        done: false
-        }, {
-        id: 12,
-        title: "sleep",
-        done: false
-      }]
-    }
-
+    mockTasks = [{
+      id: 11,
+      title: "clean house",
+      comments: ["will do this weekend"],
+      content: "list of work",
+      done: false
+      }, {
+      id: 12,
+      title: "sleep",
+      done: false
+    }];
 
   })
 
   beforeEach(module('metaList'));
-
-  beforeEach(module(function($provide) {
-    $provide.value("mlListService", {
-      getListById: function() {
-        return mockList
-      }
-    })
+  beforeEach(inject(function(mlTaskService) {
+    mlTaskService.setTasks(mockTasks);
   }));
 
-  beforeEach(inject(function(mlTaskService){
-    mlTaskService.setParentListTasks(1)
-  }))
 
   it('is sane', inject(function(mlTaskService) {
 
@@ -43,24 +30,24 @@ describe('task service', function() {
     expect(mlTaskService).toBeDefined();
   }));
 
-  xit('setParentList , should parent list', inject(function(mlTaskService) {
+  it('setTasks , should set tasks object', inject(function(mlTaskService) {
 
-    var tasks = mlTaskService.setParentListTasks(1)
+    var tasks = mlTaskService.setTasks(mockTasks)
     /*then*/
-    expect(tasks).toEqual(mockList.tasks);
+    expect(tasks).toEqual(mockTasks);
   }));
 
-  it("getTasks, should get all the taskItems", inject(function(mlTaskService){
+  it("getTasks, can get taskItems", inject(function(mlTaskService) {
 
-     /*when*/
-     var tasks = mlTaskService.getTasks();
+    /*when*/
+    var tasks = mlTaskService.getTasks();
 
-     /*then*/
-     expect(tasks).toEqual(mockList.tasks);
+    /*then*/
+    expect(tasks).toEqual(mockTasks);
 
-   }));
+  }));
 
-  it("addTask:, should add a task item", inject(function(mlTaskService){
+  it("addTask:, can add new task item", inject(function(mlTaskService) {
 
     /*setup*/
     var newTask = {
@@ -70,8 +57,8 @@ describe('task service', function() {
     /*when*/
     mlTaskService.addTask(newTask);
 
-    var tasks = mockList.tasks;
-    var lastIndex = tasks.length-1;
+    var tasks = mockTasks;
+    var lastIndex = tasks.length - 1;
 
     /*then*/
     expect(tasks[lastIndex].title).toEqual("eat");
@@ -79,43 +66,53 @@ describe('task service', function() {
 
   }));
 
-  it("removeTask:, should remove task", inject(function(mlTaskService){
+  it("removeTask:, can remove task", inject(function(mlTaskService) {
 
-      mlTaskService.removeTask(11);
+    /*when*/
+    mlTaskService.removeTask(11);
 
-      expect(mockList.tasks.length).toEqual(1);
-
-  }))
-
-   it("checkTaskFrom:, should remove task from given listId", inject(function(mlTaskService){
-
-      mlTaskService.checkTask(11);
-
-      expect(mockList.tasks[0].done).toEqual(true);
+    /*then*/
+    expect(mockTasks.length).toEqual(1);
 
   }))
 
-   it("getTaskById:, should get by TaskId", inject(function(mlTaskService){
+  it("checkTaskFrom:, can update task state to done", inject(function(mlTaskService) {
 
-      mlTaskService.getTaskById(11);
+    /*when*/
+    mlTaskService.checkTask(11);
 
-      expect(mockList.tasks[0].title).toEqual("clean house");
-
-  }))
-
-   it("addComment:, should add a new Comment to given task", inject(function(mlTaskService){
-
-      mlTaskService.addComment(11, "done");
-
-      expect(mockList.tasks[0].comments.length).toEqual(2);
+    /*then*/
+    expect(mockTasks[0].done).toEqual(true);
 
   }))
 
-   it("updateContent:, should update content of given task", inject(function(mlTaskService){
+  it("getTaskById:, can get task by Id", inject(function(mlTaskService) {
 
-      mlTaskService.updateContent(11, "new content");
+    /*when*/
+    mlTaskService.getTaskById(11);
 
-      expect(mockList.tasks[0].content).toEqual("new content");
+    /*then*/
+    expect(mockTasks[0].title).toEqual("clean house");
+
+  }))
+
+  it("addComment:, can add new Comment to given task", inject(function(mlTaskService) {
+
+    /*when*/
+    mlTaskService.addComment(11, "done");
+
+    /*then*/
+    expect(mockTasks[0].comments.length).toEqual(2);
+
+  }))
+
+  it("updateContent:, should update content of given task", inject(function(mlTaskService) {
+
+    /*when*/
+    mlTaskService.updateContent(11, "new content");
+
+    /*then*/
+    expect(mockTasks[0].content).toEqual("new content");
 
   }))
 });
