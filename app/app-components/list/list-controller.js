@@ -1,21 +1,13 @@
-metaList.controller('mlListCtrl', ['$scope', 'mlRouteParam', 'mlListService', function($scope, mlRouteParam, mlListService) {
+angular.module('metaList').controller('mlListCtrl', ['$scope', 'mlRouteParam', 'mlListService', "mlState", function($scope, mlRouteParam, mlListService, mlState) {
 
-    var listIdWatcher = function() {
-      return mlRouteParam.getListId();
-    }
-
-    var listIdListener = function(value) {
-       $scope.activeListId = value;        
-    }
-
-    $scope.$watch(listIdWatcher, listIdListener);
     
+    $scope.states = mlState.getStates();
     $scope.lists = mlListService.getLists();
 
     $scope.selectList = function(id) {
-      mlRouteParam.setParam(id);
+      mlRouteParam.setListId(id);
+      $scope.updatedListTitle = $scope.states.currentList.title;
       $scope.enableEdit = false;
-      return false;
     }
 
     $scope.removeList = function(id) {

@@ -21,11 +21,11 @@ describe("list controller", function() {
     removeListById: function() {
       return;
     },
-    addList: function(){
-        return;
+    addList: function() {
+      return;
     },
-    updateListById: function(){
-        return
+    updateListById: function() {
+      return
     }
   }
 
@@ -55,18 +55,19 @@ describe("list controller", function() {
 
   });
 
-  it(":selectList, should apply active class to selected list item", function() {
+  it(":selectList, should apply active class to selected list item", inject(function(mlRouteParam) {
 
-
+    spyOn(mlRouteParam, "setListId");
     /*when*/
 
     scope.selectList(1);
 
     /*then*/
-    // expect(scope.activeListId).toEqual(1);
-    expect(scope.enableEdit).toEqual(false);
+    
+    expect(mlRouteParam.setListId).toHaveBeenCalledWith(1);
+    expect(scope.enableEdit).toEqual(false);    
 
-  })
+  }))
 
   it(":removeList, should remove list from listDb", function() {
 
@@ -80,7 +81,7 @@ describe("list controller", function() {
     expect(mlDataServiceMock.removeListById).toHaveBeenCalledWith(1);
   })
 
-  it(":addList, should add new list in listDb", function(){
+  it(":addList, should add new list in listDb", function() {
 
     /*setup*/
     spyOn(mlDataServiceMock, "addList");
@@ -90,11 +91,13 @@ describe("list controller", function() {
     scope.addList();
 
     /*then*/
-    expect(mlDataServiceMock.addList).toHaveBeenCalledWith({title: "bucketList"});
+    expect(mlDataServiceMock.addList).toHaveBeenCalledWith({
+      title: "bucketList"
+    });
 
   });
 
-  it(":enableEditMode, should enable edit field for selected list item", function(){
+  it(":enableEditMode, should enable edit field for selected list item", function() {
 
     /*when*/
     scope.enableEditField(1);
@@ -103,12 +106,12 @@ describe("list controller", function() {
     expect(scope.enableEdit).toEqual(1);
   })
 
-  it(":stopPropagation, should stop event bubbling", function(){
+  it(":stopPropagation, should stop event bubbling", function() {
 
     event = {
-        stopPropagation: function(){
-            return;
-        }
+      stopPropagation: function() {
+        return;
+      }
     }
 
     spyOn(event, "stopPropagation");
@@ -119,7 +122,7 @@ describe("list controller", function() {
     expect(event.stopPropagation).toHaveBeenCalled();
   })
 
-  it(":updateList, should update list title with new title on [enter]", function(){
+  it(":updateList, should update list title with new title on [enter]", function() {
 
     spyOn(mlDataServiceMock, "updateListById");
 
@@ -127,8 +130,8 @@ describe("list controller", function() {
     scope.updateList(1, "bucketList")
 
     /*then*/
-    expect(mlDataServiceMock.updateListById).toHaveBeenCalledWith(1,"bucketList");
-    
+    expect(mlDataServiceMock.updateListById).toHaveBeenCalledWith(1, "bucketList");
+
   })
 
 });
