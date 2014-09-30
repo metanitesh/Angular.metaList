@@ -30,5 +30,6 @@
 
     /*then*/
     expect(mlTaskService.updateContent).toHaveBeenCalled();
-  }))
+    expect(mlTaskService.updateContent.mostRecentCall.args[1]).toEqual("newContent");
+  }));
 });
