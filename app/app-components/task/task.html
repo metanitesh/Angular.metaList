@@ -1,16 +1,17 @@
 <add-task></add-task>
 <div class="task-group" >
     <ul class="task-remaining">
-        <li class="task-item" ng-repeat="task in tasks" ng-class="{'task-done': task.done, 'task-item-selected':activeTaskId == task.id}" ng-click="selectTask(task.id)">    
+
+        <li class="task-item" ng-repeat="task in states.tasks" ng-if="task.done == false" ng-class="{'task-item-selected':states.currentTask.id == task.id}" ng-click="selectTask(task.id)">    
             <display-task></display-task> 
         </li>
     </ul>
-    <!-- <h1 class="text-color-flip">completed task</h1>
+    <h1 class="text-color-flip">completed task</h1>
     <ul class="task-complete">
-      <li class="task-item" ng-repeat="task in tasks" ng-if="task.done == true">    
+      <li class="task-item task-done" ng-repeat="task in states.tasks" ng-if="task.done == true" ng-class="{'task-item-selected':states.currentTask.id == task.id}" ng-click="selectTask(task.id)">    
         <display-task></display-task>
     </li>
 </ul>
- -->
+
 
 </div>
