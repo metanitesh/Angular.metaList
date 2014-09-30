@@ -1,4 +1,4 @@
-metaList.directive('ngEnter', function () {
+angular.module('metaList').directive('ngEnter', function () {
     return function (scope, element, attrs) {
         element.bind("keydown keypress", function (event) {
             if(event.which === 13) {

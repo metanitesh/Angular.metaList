@@ -1,4 +1,4 @@
-metaList.controller('mlTaskCtrl', ['$scope', 'mlRouteParam', 'mlTaskService', function($scope, mlRouteParam, mlTaskService) {
+angular.module("metaList").controller('mlTaskCtrl', ['$scope', 'mlRouteParam', 'mlTaskService', function($scope, mlRouteParam, mlTaskService) {
 
     $scope.$watch(function() {
       return mlRouteParam.getParam().listId;
