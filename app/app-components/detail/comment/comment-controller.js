@@ -4,7 +4,9 @@ angular.module("metaList").controller('mlCommentCtrl', ['$scope', 'mlState', 'ml
     $scope.states = mlState.getStates();
 
     $scope.addComment = function(newComment){
-        mlTaskService.addComment(mlState.getStates().currentTask.id, newComment);
+        
+        var taskId = $scope.states.currentTask.id;
+        mlTaskService.addComment(taskId, newComment);
         $scope.newComment = "";
     }
 }])
