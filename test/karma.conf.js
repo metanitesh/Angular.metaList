@@ -13,17 +13,20 @@ module.exports = function(config) {
       'app/bower_components/angular-route/angular-route.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
       'app/app-components/app.js',
+
       'app/app-components/storage/*.js',
       'app/app-components/common/services/*.js',
 
       'app/app-components/list/**/*.js',
       'app/app-components/task/**/*.js',
+      'app/app-components/detail/**/*.js',
 
       'test/unit/storage/*.js',
       'test/unit/common/*.js',
 
       'test/unit/list/*.js',
       'test/unit/task/*.js',
+      'test/unit/detail/*.js',
 
       'app/app-components/**/*.html',
     ],

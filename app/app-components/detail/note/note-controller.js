@@ -3,7 +3,8 @@ angular.module("metaList").controller('mlNoteCtrl', ['$scope', 'mlState', 'mlTas
     $scope.states = mlState.getStates();
 
     $scope.updateContent = function(newConent){
-        mlTaskService.updateContent(mlState.getStates().currentTask.id, newConent);
+        var taskId = $scope.states.currentTask.id;
+        mlTaskService.updateContent( taskId, newConent);
     }
     
 }])
