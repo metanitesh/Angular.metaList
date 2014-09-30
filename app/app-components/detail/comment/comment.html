@@ -1,7 +1,7 @@
 <div id="comment-view">
     <div class="comment-container">
     <ul class="comments" >
-        <li class="comment" ng-repeat="comment in task.comments">{{comment}}</li>
+        <li class="comment" ng-repeat="comment in states.currentComments">{{comment}}</li>
     </ul>
         <div class="add-comment-container">
             <input type="text" class="add-comment " placeholder="add comment" ng-model="newComment" ng-enter="addComment(newComment)">
