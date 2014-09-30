@@ -4,7 +4,7 @@ describe('task service', function() {
 
   beforeEach(function() {
 
-    mockListDb = [{
+    mockList = {
       id: 1,
       title: "todo",
       tasks: [{
@@ -12,38 +12,30 @@ describe('task service', function() {
         title: "clean house",
         comments: ["will do this weekend"],
         content: "list of work",
-        done:false
+        done: false
         }, {
         id: 12,
         title: "sleep",
-        done:false
+        done: false
       }]
-      }, {
-      id: 2,
-      title: "movie",
-      tasks: [{
-        id: 21,
-        title: "batman",
-        done:false
-        }, {
-        id: 22,
-        title: "harry Potter",
-        done:false
-      }]
-      }
-    ];
+    }
+
 
   })
 
   beforeEach(module('metaList'));
 
   beforeEach(module(function($provide) {
-    $provide.value("mlLocalStorgae", {
-      getData: function() {
-        return mockListDb
+    $provide.value("mlListService", {
+      getListById: function() {
+        return mockList
       }
     })
   }));
+
+  beforeEach(inject(function(mlTaskService){
+    mlTaskService.setParentListTasks(1)
+  }))
 
   it('is sane', inject(function(mlTaskService) {
 
@@ -51,17 +43,24 @@ describe('task service', function() {
     expect(mlTaskService).toBeDefined();
   }));
 
-  it("getTasksFor:, should get all the taskItems for listId", inject(function(mlTaskService){
+  xit('setParentList , should parent list', inject(function(mlTaskService) {
 
-    /*when*/
-    var tasks = mlTaskService.getTasksFor(1);
-
+    var tasks = mlTaskService.setParentListTasks(1)
     /*then*/
-    expect(tasks).toEqual(mockListDb[0].tasks);
-
+    expect(tasks).toEqual(mockList.tasks);
   }));
 
-  it("addTaskTo:, should add a task item to given listId", inject(function(mlTaskService){
+  it("getTasks, should get all the taskItems", inject(function(mlTaskService){
+
+     /*when*/
+     var tasks = mlTaskService.getTasks();
+
+     /*then*/
+     expect(tasks).toEqual(mockList.tasks);
+
+   }));
+
+  it("addTask:, should add a task item", inject(function(mlTaskService){
 
     /*setup*/
     var newTask = {
@@ -69,9 +68,9 @@ describe('task service', function() {
     }
 
     /*when*/
-    mlTaskService.addTaskTo(1, newTask);
+    mlTaskService.addTask(newTask);
 
-    var tasks = mockListDb[0].tasks;
+    var tasks = mockList.tasks;
     var lastIndex = tasks.length-1;
 
     /*then*/
@@ -80,43 +79,43 @@ describe('task service', function() {
 
   }));
 
-  it("removeTaskFrom:, should remove task from given listId", inject(function(mlTaskService){
+  it("removeTask:, should remove task", inject(function(mlTaskService){
 
-      mlTaskService.removeTaskFrom(1,11);
+      mlTaskService.removeTask(11);
 
-      expect(mockListDb[0].tasks.length).toEqual(1);
-      
+      expect(mockList.tasks.length).toEqual(1);
+
   }))
 
    it("checkTaskFrom:, should remove task from given listId", inject(function(mlTaskService){
 
-      mlTaskService.checkTaskFrom(1,11);
+      mlTaskService.checkTask(11);
 
-      expect(mockListDb[0].tasks[0].done).toEqual(true);
-      
+      expect(mockList.tasks[0].done).toEqual(true);
+
   }))
 
    it("getTaskById:, should get by TaskId", inject(function(mlTaskService){
 
-      mlTaskService.getTaskById(1,11);
+      mlTaskService.getTaskById(11);
 
-      expect(mockListDb[0].tasks[0].title).toEqual("clean house");
-      
+      expect(mockList.tasks[0].title).toEqual("clean house");
+
   }))
 
    it("addComment:, should add a new Comment to given task", inject(function(mlTaskService){
 
-      mlTaskService.addComment(1, 11, "done");
+      mlTaskService.addComment(11, "done");
 
-      expect(mockListDb[0].tasks[0].comments.length).toEqual(2);
-      
+      expect(mockList.tasks[0].comments.length).toEqual(2);
+
   }))
 
-   it("updateContent:, should add content to given task", inject(function(mlTaskService){
+   it("updateContent:, should update content of given task", inject(function(mlTaskService){
 
-      mlTaskService.updateContent(1, 11, "new content");
+      mlTaskService.updateContent(11, "new content");
 
-      expect(mockListDb[0].tasks[0].content).toEqual("new content");
-      
+      expect(mockList.tasks[0].content).toEqual("new content");
+
   }))
 });

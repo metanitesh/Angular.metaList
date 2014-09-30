@@ -1,69 +1,71 @@
-angular.module("metaList").factory('mlTaskService', ["mlData", "mlIdGenerator", function(mlData, mlIdGenerator) {
+angular.module("metaList").factory('mlTaskService', ["mlListService", "mlIdGenerator", function(mlListService, mlIdGenerator) {
 
     "use strict";
+    var tasks;
 
-    var getTaskFor = function(listId) {
-      return mlData.getListById(listId).tasks;
+    var setParentListTasks = function(listId){
+      tasks = mlListService.getListById(listId).tasks;
+      return tasks;
+    } 
+
+
+    var getTasks= function() {
+
+      return tasks;
     };
 
-    var addTaskTo = function(listId, config) {
+    var addTask = function(config) {
 
       if (!config.title) {
         throw "to create a new task title is required";
       }
 
       var newTask = {
-        id: mlIdGenerator.getId(),
+        id: mlIdGenerator.generateId(),
         title: config.title,
-
         done: false
       };
 
-      var tasks = getTaskFor(listId);
       tasks.push(newTask);
     };
 
-    var removeTaskFrom = function(listId, taskId) {
-      var tasks = getTaskFor(listId);
-
+    var removeTask = function(taskId) {
+      
       for (var i = tasks.length - 1; i >= 0; i--) {
         if (tasks[i]["id"] === taskId)
           tasks.splice(i, 1);
       }
     }
 
-    var checkTaskFrom = function(listId, taskId) {
-      var tasks = getTaskFor(listId);
+    var checkTask = function(taskId) {
 
-      _.findWhere(tasks, {
-        id: taskId
-      }).done = true;
+     getTaskById(taskId).done = true;
 
     }
 
-    var getTaskById = function(listId, taskId) {
-      var tasks = getTaskFor(listId);
-
+    var getTaskById = function(taskId) {
+      
       return _.findWhere(tasks, {
         id: taskId
       })
     }
 
-    var addComment = function(listId, taskId, newComment){
-      var task =  getTaskById(listId, taskId)
+    var addComment = function(taskId, newComment){
+      var task =  getTaskById(taskId)
       task.comments.push(newComment);
     }
 
-    var updateContent = function(listId, taskId, newContent){
-       var task =  getTaskById(listId, taskId)
+    var updateContent = function(taskId, newContent){
+       var task =  getTaskById(taskId)
         task.content = newContent;
     }
 
     return {
-      getTasksFor: getTaskFor,
-      addTaskTo: addTaskTo,
-      removeTaskFrom: removeTaskFrom,
-      checkTaskFrom: checkTaskFrom,
+      setParentListTasks: setParentListTasks,
+      getTasks: getTasks,
+      addTask: addTask,
+      removeTask: removeTask,
+      checkTask: checkTask,
       getTaskById: getTaskById,
       addComment: addComment,
       updateContent: updateContent
