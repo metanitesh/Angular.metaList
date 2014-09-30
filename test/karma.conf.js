@@ -17,11 +17,13 @@ module.exports = function(config) {
       'app/app-components/common/services/*.js',
 
       'app/app-components/list/**/*.js',
+      'app/app-components/task/**/*.js',
 
       'test/unit/storage/*.js',
       'test/unit/common/*.js',
 
       'test/unit/list/*.js',
+      // 'test/unit/task/*.js',
 
       'app/app-components/**/*.html',
     ],
