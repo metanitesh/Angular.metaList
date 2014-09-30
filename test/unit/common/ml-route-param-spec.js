@@ -1,9 +1,8 @@
-describe('data service', function() {
+describe('mlRouteParam service', function() {
 
-  
-  
+
   beforeEach(module('metaList'));
-  
+
   beforeEach(module(function($provide) {
     $provide.value("$location", {
       path: function() {
@@ -18,38 +17,50 @@ describe('data service', function() {
     expect(mlRouteParam).toBeDefined();
   }));
 
-  it("getRouteParam, should  get listId and taskId in return Object", inject(function(mlRouteParam){
+  it("getListId, should  get listId from location object", inject(function(mlRouteParam) {
 
-    var params = mlRouteParam.getParam();
+    var listId = mlRouteParam.getListId();
 
-    expect(params.listId).toEqual("1");
-    expect(params.taskId).toEqual("12");
+    /*then*/
+    expect(listId).toEqual("1");
 
   }))
 
-  it("setRouteParam, should should set listId and taskId in return Object", inject(function($location, mlRouteParam){
-    
+
+  it("taskId, should  get listId from location object", inject(function(mlRouteParam) {
+
+    var taskId = mlRouteParam.getTaskId();
+
+    /*then*/
+    expect(taskId).toEqual("12");
+
+  }))
+
+  it("setListId, should set listId to location object", inject(function($location, mlRouteParam) {
+
+    /*setup*/
     spyOn($location, "path");
 
-    var params = mlRouteParam.setParam(1,2);
+    /*when*/
+    mlRouteParam.setListId(1);
 
-    expect($location.path).toHaveBeenCalledWith("/1/2")
+    /*then*/
+    expect($location.path).toHaveBeenCalledWith("/1")
+  }))
+
+  it("setTaskId, should set taskId to location object", inject(function($location, mlRouteParam) {
+
+    /*setup*/
+    spyOn($location, "path").andReturn("/1");
+
+    /*when*/
+    mlRouteParam.setTaskId(12);
+
+    /*then*/
+    expect($location.path).toHaveBeenCalledWith("/1/12")
   }))
 
 
-  it("getListId, should get listId from location", inject(function($location, mlRouteParam){
-    
-     var listId = mlRouteParam.getListId();
-     expect(listId).toEqual("1")
-
-  }))
-
-  it("getTaskId, should get taskId from location", inject(function($location, mlRouteParam){
-    
-     var taskId = mlRouteParam.getTaskId();
-     expect(taskId).toEqual("12")
-     
-  }))
 
 
 });
