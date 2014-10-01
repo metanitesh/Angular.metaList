@@ -5,7 +5,10 @@ angular.module('metaList').controller("mlAppController", ['$scope', "mlRoutePara
     }
 
     listIdListener = function(listId){
-        mlState.setCurrentList(listId);
+        if(listId){
+            mlState.setCurrentList(listId);    
+        }
+        
     }
     
     taskIdWatcher = function(){
@@ -13,7 +16,10 @@ angular.module('metaList').controller("mlAppController", ['$scope', "mlRoutePara
     }
     
     taskIdListener = function(taskId){
-        mlState.setCurrentTask(taskId);
+        if(taskId){
+            mlState.setCurrentTask(taskId);    
+        }
+        
         
     }    
 
