@@ -1,6 +1,6 @@
 <div id="note-view">
   <div class="note-container">
-    <textarea class="note" ng-model="states.currentContent" ng-keypress="updateContent(states.currentContent)"></textarea>
+    <textarea class="note" ng-class="{'disabled': !states.currentTask}" ng-disabled="!states.currentTask" ng-model="states.currentContent" ng-keypress="updateContent(states.currentContent)"></textarea>
 </div>                  
 </div>
 

@@ -4,7 +4,7 @@
         <li class="comment" ng-repeat="comment in states.currentComments">{{comment}}</li>
     </ul>
         <div class="add-comment-container">
-            <input type="text" class="add-comment " placeholder="add comment" ng-model="newComment" ng-enter="addComment(newComment)">
+            <input type="text" class="add-comment " placeholder="add comment" ng-class="{'disabled': !states.currentTask}" ng-disabled="!states.currentTask" ng-model="newComment" ng-enter="addComment(newComment)">
         </div>
     </div>
 </div>
