@@ -25,41 +25,22 @@
    
     <div class="interface" ng-controller="mlAppController">
         
-        <!-- left column -->    
+        
         <div id="sidebar">
-            <div class="logo-container">
-                <span>metalist</span>
-            </div>
+            <logo></logo>
             <list></list>
         </div>
         
-        <!-- main column --> 
+        
         <div id="main-content" class="">
             <task></task>
 
         </div>
         
-        <!-- right column -->    
+        
         <div id="detail" class="hide-mobile">
-
-            <div class="panel">
-                <div class="panel-title">
-                    <span>Task Detail</span>
-                </div>
-
-                <h1 class="panel-heading">
-                    <span>content</span>
-                </h1>
-
-
-                <note></note>        
-
-                <h1 class="panel-heading">
-                    <span>comments</span>
-                </h1>
-
-                <comment></comment>
-            </div>
+            <panel></panel>
+           
         </div>
         
         <!-- bottom action row -->    
@@ -117,7 +98,12 @@
     
     <!-- actionbar component -->  
     <script src="app-components/actionbar/ml-actionbar-directive.js"></script>
-   
+    
+    <!--dom directives -->
+    <script src="app-components/dom-directive/logo/ml-logo-directive.js"></script>
+    <script src="app-components/dom-directive/panel/ml-panel-directive.js"></script>
+
+        
 </body>
 
 </html>
