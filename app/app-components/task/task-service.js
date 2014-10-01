@@ -21,6 +21,8 @@ angular.module("metaList").factory('mlTaskService', [ "mlIdGenerator", function(
       var newTask = {
         id: mlIdGenerator.generateId(),
         title: config.title,
+        comments: [],
+        content: "",
         done: false
       };
 

@@ -2,8 +2,8 @@
 
 angular.module('metaList', ['ngRoute']).run(["mlStorage", function(mlStorage){
     
-    // mlStorage.setDbName("angular.MetaList");
-    // mlStorage.init();
+    mlStorage.setDbName("angular.MetaList");
+    mlStorage.init();
     
 }]);
 

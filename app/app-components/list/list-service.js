@@ -3,7 +3,7 @@ angular.module("metaList").factory('mlListService', ["mlStorage", "mlIdGenerator
     "use strict";
 
     var listsDb = mlStorage.getData();
-
+   
     var getLists = function() {
       return listsDb;
     }
