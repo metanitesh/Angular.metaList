@@ -17,23 +17,15 @@
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/modules.css">
     <link rel="stylesheet" href="css/states.css">
-    <link rel="stylesheet" href="css/responsive.css">
+
 
 </head>
 
 <body>
-    <div id="mobile">        
-        <div class="logo-container">
-            <span>metalist</span>
-        </div>
-        <div class="mobile_menu">        
-            <span class="mobile_menu-item menu-list"> list </span>
-            <span class="mobile_menu-item menu-task"> task </span>
-            <span class="mobile_menu-item menu-detail"> detail </span>
-        </div> 
-    </div>
-
+   
     <div class="interface" ng-controller="mlAppController">
+        
+        <!-- left column -->    
         <div id="sidebar">
             <div class="logo-container">
                 <span>metalist</span>
@@ -41,11 +33,13 @@
             <list></list>
         </div>
         
+        <!-- main column --> 
         <div id="main-content" class="">
             <task></task>
 
         </div>
-         
+        
+        <!-- right column -->    
         <div id="detail" class="hide-mobile">
 
             <div class="panel">
@@ -66,56 +60,63 @@
 
                 <comment></comment>
             </div>
-        </div>    
+        </div>
+        
+        <!-- bottom action row -->    
         <actionbar></actionbar>
             
     </div>
 
     
     <div class="loader">
-        <!-- <img src="images/loader.gif" width="33" alt=""> -->
+        <img src="images/loader.gif" width="33" alt="">
     </div>
-
+    
+    <!--libs -->
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
-    
-    <script src="app-components/app.js"></script>
+        
+    <!-- app -->    
+    <script src="app-components/ml-app.js"></script>
     <script src="app-components/ml-app-controller.js"></script>
-
+    
+    <!-- common component-->
     <script src="app-components/common/services/ml-route-param.js"></script>
     <script src="app-components/common/services/ml-state.js"></script>
     <script src="app-components/common/services/ml-id-generator.js"></script>
     <script src="app-components/common/directives/enter-directive.js"></script>
     
+    <!-- storage -->    
     <script src="app-components/storage/ml-app-storage.js"></script>    
     <script src="app-components/storage/ml-bootstarp-data.js"></script>    
     <script src="app-components/storage/ml-local-storage.js"></script>    
-
-    <script src="app-components/list/list-controller.js"></script>
-    <script src="app-components/list/list-directive.js"></script>
-    <script src="app-components/list/list-service.js"></script>
-
-    <script src="app-components/list/display-list/display-list-directive.js"></script>
-    <script src="app-components/list/add-list/add-list-directive.js"></script>
     
+    <!-- list component -->
+    <script src="app-components/list/ml-list-controller.js"></script>
+    <script src="app-components/list/ml-list-directive.js"></script>
+    <script src="app-components/list/ml-list-service.js"></script>
+    <script src="app-components/list/display-list/ml-display-list-directive.js"></script>
+    <script src="app-components/list/add-list/ml-add-list-directive.js"></script>
     
-    <script src="app-components/task/task-service.js"></script>
-    <script src="app-components/task/task-controller.js"></script>
-    <script src="app-components/task/task-directive.js"></script>
+    <!-- task component -->
+    <script src="app-components/task/ml-task-service.js"></script>
+    <script src="app-components/task/ml-task-controller.js"></script>
+    <script src="app-components/task/ml-task-directive.js"></script>
+    <script src="app-components/task/display-task/ml-display-task-directive.js"></script>
+    <script src="app-components/task/add-task/ml-add-task-directive.js"></script>
+        
+    <!-- note component -->    
+    <script src="app-components/detail/note/ml-note-directive.js"></script>
+    <script src="app-components/detail/note/ml-note-controller.js"></script>
     
-    <script src="app-components/task/display-task/display-task-directive.js"></script>
-    <script src="app-components/task/add-task/add-task-directive.js"></script>
+    <!-- comment component -->
+    <script src="app-components/detail/comment/ml-comment-directive.js"></script>
+    <script src="app-components/detail/comment/ml-comment-controller.js"></script>
     
-    <script src="app-components/detail/note/note-directive.js"></script>
-    <script src="app-components/detail/note/note-controller.js"></script>
-    
-    
-    <script src="app-components/detail/comment/comment-directive.js"></script>
-    <script src="app-components/detail/comment/comment-controller.js"></script>
-      
-    <script src="app-components/actionbar/actionbar-directive.js"></script>
+    <!-- actionbar component -->  
+    <script src="app-components/actionbar/ml-actionbar-directive.js"></script>
    
 </body>
 

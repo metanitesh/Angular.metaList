@@ -2,6 +2,6 @@
 <span class="icon delete-list icon-delete right" ng-class= "{'icon-delete-active': states.currentList.id === list.id}" ng-click="removeList(list.id)"></span>
 <span class="title"  ng-hide="enableEdit === list.id">{{ list.title }}</span>
 <span class="input-wrapper " ng-show="enableEdit === list.id" > 
-    <input maxlength="255" class="edit-list-input " type="text"  ng-model="updatedListTitle" ng-click="stopPropagation($event)" ng-enter="updateList(list.id, updatedListTitle)"  >  
+	<input maxlength="255" class="edit-list-input " type="text"  ng-model="updatedListTitle" ng-click="stopPropagation($event)" ng-enter="updateList(list.id, updatedListTitle)"  >  
 </span>
 

@@ -1,10 +1,12 @@
+"use strict";
+
 describe('mlIdGenerator service', function() {
 
   var mockListDb;
 
- 
+
   beforeEach(module('metaList'));
- 
+
   it('is sane', inject(function(mlIdGenerator) {
 
     /*then*/
@@ -17,5 +19,5 @@ describe('mlIdGenerator service', function() {
     expect(mlIdGenerator.generateId().length).toEqual(36);
   }));
 
-  
+
 });

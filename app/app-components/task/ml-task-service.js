@@ -1,14 +1,16 @@
-angular.module("metaList").factory('mlTaskService', [ "mlIdGenerator", function( mlIdGenerator) {
+"use strict";
 
-    "use strict";
+angular.module("metaList").factory('mlTask', ["mlIdGenerator",
+  function(mlIdGenerator) {
+
     var tasks;
 
-    var setTasks = function(mlTasks){
+    var setTasks = function(mlTasks) {
       tasks = mlTasks;
       return tasks;
-    } 
+    };
 
-    var getTasks= function() {
+    var getTasks = function() {
       return tasks;
     };
 
@@ -30,35 +32,34 @@ angular.module("metaList").factory('mlTaskService', [ "mlIdGenerator", function(
     };
 
     var removeTask = function(taskId) {
-      
+
       for (var i = tasks.length - 1; i >= 0; i--) {
-        if (tasks[i]["id"] === taskId)
+        if (tasks[i].id === taskId)
           tasks.splice(i, 1);
       }
-    }
+    };
 
     var checkTask = function(taskId) {
-
-     getTaskById(taskId).done = true;
-
-    }
+      getTaskById(taskId).done = true;
+    };
 
     var getTaskById = function(taskId) {
-      
+
       return _.findWhere(tasks, {
         id: taskId
-      })
-    }
+      });
 
-    var addComment = function(taskId, newComment){
-      var task =  getTaskById(taskId)
+    };
+
+    var addComment = function(taskId, newComment) {
+      var task = getTaskById(taskId);
       task.comments.push(newComment);
-    }
+    };
 
-    var updateContent = function(taskId, newContent){
-       var task =  getTaskById(taskId)
-        task.content = newContent;
-    }
+    var updateContent = function(taskId, newContent) {
+      var task = getTaskById(taskId);
+      task.content = newContent;
+    };
 
     return {
       setTasks: setTasks,
@@ -71,4 +72,5 @@ angular.module("metaList").factory('mlTaskService', [ "mlIdGenerator", function(
       updateContent: updateContent
     };
 
-}]);
+  }
+]);

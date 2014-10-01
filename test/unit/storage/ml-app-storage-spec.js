@@ -1,14 +1,19 @@
-describe('data service', function() {
+"use strict";
 
-  
+describe('mlStorage service', function() {
+
   beforeEach(module('metaList'));
 
-  beforeEach(function(){
-    localStorage.setItem("testDb", JSON.stringify({list: "movie"}))
-  })
+  beforeEach(function() {
+    localStorage.setItem("testDb", JSON.stringify({
+      list: "movie"
+    }));
+  });
 
   beforeEach(module(function($provide) {
-    $provide.value("mlBootstrapData", {list: "todo"})
+    $provide.value("mlBootstrapData", {
+      list: "todo"
+    });
   }));
 
   it('is sane', inject(function(mlStorage) {
@@ -19,34 +24,38 @@ describe('data service', function() {
 
 
   it("init, should intialize db and set bootstrapData", inject(function(mlStorage) {
-    
-    /*setup*/  
+
+    /*setup*/
     mlStorage.setDbName("newTestDb");
-     
-    /*when*/  
+
+    /*when*/
     mlStorage.init();
-    data = mlStorage.getData();
+    var data = mlStorage.getData();
 
     /*then*/
-    expect(data).toEqual({list: "todo"})
-    
+    expect(data).toEqual({
+      list: "todo"
+    });
+
     /*after*/
-    localStorage.removeItem("newTestDb")
+    localStorage.removeItem("newTestDb");
     localStorage.removeItem("testDb");
   }));
 
 
   it("init, should use if db is available in localstorage", inject(function(mlStorage) {
-    
-    /*setup*/  
+
+    /*setup*/
     mlStorage.setDbName("testDb");
     mlStorage.init();
 
-    /*when*/  
-    data = mlStorage.getData();
+    /*when*/
+    var data = mlStorage.getData();
 
-    /*then*/  
-    expect(data).toEqual({list: "movie"})
+    /*then*/
+    expect(data).toEqual({
+      list: "movie"
+    });
 
     /*after*/
     localStorage.removeItem("testDb");

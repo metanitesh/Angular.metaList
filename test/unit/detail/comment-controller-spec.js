@@ -1,35 +1,37 @@
- describe("comment controller", function() {
+ "use strict";
 
-  var scope;
-  var controller;
+ describe("mlCommentCtrl", function() {
 
-  
-  beforeEach(module("metaList"));
+   var scope;
+   var controller;
 
-  beforeEach(function() {
-    inject(function($rootScope, $controller) {
 
-      scope = $rootScope.$new();
-      controller = $controller;
+   beforeEach(module("metaList"));
 
-    })
-  });
+   beforeEach(function() {
+     inject(function($rootScope, $controller) {
 
-  beforeEach(function() {
-    controller("mlCommentCtrl", {
-      $scope: scope
-    })
-  })
+       scope = $rootScope.$new();
+       controller = $controller;
 
-  it("updateContent, should update content of task", inject(function(mlTaskService){
-    /*setup*/
-    spyOn(mlTaskService, "addComment");
-    
-    /*when*/
-    scope.addComment("newComment");
+     });
+   });
 
-    /*then*/
-    expect(mlTaskService.addComment).toHaveBeenCalled();
-    expect(mlTaskService.addComment.mostRecentCall.args[1]).toEqual("newComment")
-  }))
-});
+   beforeEach(function() {
+     controller("mlCommentCtrl", {
+       $scope: scope
+     });
+   });
+
+   it("updateContent, should update content of current task", inject(function(mlTask) {
+     /*setup*/
+     spyOn(mlTask, "addComment");
+
+     /*when*/
+     scope.addComment("newComment");
+
+     /*then*/
+     expect(mlTask.addComment).toHaveBeenCalled();
+     expect(mlTask.addComment.mostRecentCall.args[1]).toEqual("newComment");
+   }));
+ });

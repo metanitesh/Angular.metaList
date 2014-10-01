@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 
 		jshint: {
-			all: ['app/js/**/*.js'],
+			all: ['app/app-components/**/*.js', 'test/unit/**/*.js'],
 			options: {
 				bitwise: false,
 				curly: true,

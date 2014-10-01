@@ -1,4 +1,6 @@
-describe('mlListService', function() {
+"use strict";
+
+describe('mlList service', function() {
 
   var mockListDb;
 
@@ -6,72 +8,73 @@ describe('mlListService', function() {
     mockListDb = [{
       id: 1,
       title: "todo"
-      }, {
+    }, {
       id: 2,
       title: "movie"
     }];
 
-  })
+  });
+
   beforeEach(module('metaList'));
   beforeEach(module(function($provide) {
     $provide.value("mlStorage", {
       getData: function() {
-        return mockListDb
+        return mockListDb;
       }
-    })
+    });
   }));
 
-  it('is sane', inject(function(mlListService) {
+  it('is sane', inject(function(mlList) {
 
     /*then*/
-    expect(mlListService).toBeDefined();
+    expect(mlList).toBeDefined();
   }));
 
-  it("getLists: should return collection of list", inject(function(mlListService) {
+  it("getLists: should return collection of list", inject(function(mlList) {
 
     /*when*/
-    var lists = mlListService.getLists();
+    var lists = mlList.getLists();
 
     /*then*/
     expect(lists).toEqual(mockListDb);
 
   }));
 
-  it("getListById: should return list Item based on Id", inject(function(mlListService) {
+  it("getListById: can return list Item based on Id", inject(function(mlList) {
 
     /*given*/
     var expectedList = mockListDb[0];
 
     /*when*/
-    var actualList = mlListService.getListById(1);
+    var actualList = mlList.getListById(1);
 
     /*then*/
     expect(actualList).toEqual(expectedList);
 
   }));
 
-  it("removeListById: should remove list Item based on Id", inject(function(mlListService) {
+  it("removeListById: can remove list Item based on Id", inject(function(mlList) {
 
     /*when*/
-    mlListService.removeListById(1);
+    mlList.removeListById(1);
 
     /*then*/
     expect(mockListDb.length).toEqual(1);
-    expect(mockListDb[0]["title"]).not.toEqual("todo");
+    expect(mockListDb[0].title).not.toEqual("todo");
 
   }));
 
-  it("UpdateListById: should update listItem based on Id", inject(function(mlListService) {
+  it("UpdateListById: can update listItem based on Id", inject(function(mlList) {
 
     /*when*/
-    mlListService.updateListById(2, "books");
+    mlList.updateListById(2, "books");
 
     /*then*/
     expect(mockListDb[1].title).toEqual("books");
 
     /*then*/
     expect(function() {
-      mlListService.updateListById(2, "");
+      mlList.updateListById(2, "");
     }).toThrow(new Error("can not update with a empty title"));
 
 
@@ -79,10 +82,10 @@ describe('mlListService', function() {
   }));
 
 
-  it("addList: should add listItem to listDb", inject(function(mlListService) {
+  it("addList: can add listItem to listDb", inject(function(mlList) {
 
     /*when*/
-    mlListService.addList({
+    mlList.addList({
       title: "grocery"
     });
 
@@ -92,8 +95,8 @@ describe('mlListService', function() {
 
     /*then*/
     expect(function() {
-      mlListService.addList({})
+      mlList.addList({});
     }).toThrow(new Error('to add a new list item title is required'));
-  }))
+  }));
 
 });

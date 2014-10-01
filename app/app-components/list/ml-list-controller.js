@@ -1,18 +1,19 @@
-angular.module('metaList').controller('mlListCtrl', ['$scope', 'mlRouteParam', 'mlListService', "mlState", function($scope, mlRouteParam, mlListService, mlState) {
+"use strict";
 
+angular.module('metaList').controller('mlListCtrl', ['$scope', 'mlRouteParam', 'mlList', "mlState", function($scope, mlRouteParam, mlList, mlState) {
     
     $scope.states = mlState.getStates();
-    $scope.lists = mlListService.getLists();
+    $scope.lists = mlList.getLists();
 
     $scope.selectList = function(id) {
       mlRouteParam.setListId(id);
       $scope.updatedListTitle = $scope.states.currentList.title;
       $scope.enableEdit = false;
-    }
+    };
 
     $scope.removeList = function(id) {
-      mlListService.removeListById(id);
-    }
+      mlList.removeListById(id);
+    };
 
     $scope.addList = function() {
 
@@ -20,21 +21,21 @@ angular.module('metaList').controller('mlListCtrl', ['$scope', 'mlRouteParam', '
         return;
       }
 
-      config = {}
+      var config = {};
       config.title = $scope.newListTitle;
-      mlListService.addList(config);
+      mlList.addList(config);
 
       $scope.newListTitle = "";
       
-    }
+    };
 
     $scope.enableEditField = function(id) {
       $scope.enableEdit = id;
-    }
+    };
 
     $scope.stopPropagation = function(event) {
       event.stopPropagation();
-    }
+    };
 
     $scope.updateList = function(id, updatedListTitle) {
 
@@ -42,9 +43,9 @@ angular.module('metaList').controller('mlListCtrl', ['$scope', 'mlRouteParam', '
         return;
       }
 
-      mlListService.updateListById(id, updatedListTitle);
-      $scope.enableEdit = false
+      mlList.updateListById(id, updatedListTitle);
+      $scope.enableEdit = false;
       
-    }
+    };
 
-}])
+}]);

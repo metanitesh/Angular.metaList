@@ -1,4 +1,6 @@
-describe('mlStateService', function() {
+"use strict";
+
+describe('mlState service', function() {
 
   var mockList;
   beforeEach(module('metaList'));
@@ -8,30 +10,27 @@ describe('mlStateService', function() {
     mockList = {
       "id": 1,
       "title": "To-Do",
-      "tasks": [
-        {
-          "id": 11,
-          "title": "clean house",
-          "comments": ["after lunch", "maybe tomorrow", "doesn't look that bad"],
-          "content": "it's been ages man !",
-          "done": false
-        },
-        {
-          "id": 12,
-          "title": "get a haircut",
-          "comments": ["will do this weekend"],
-          "content": "this could be a good reason to become a monk",
-          "done": true
-        }]
-
-    }
-  })
+      "tasks": [{
+        "id": 11,
+        "title": "clean house",
+        "comments": ["after lunch", "maybe tomorrow", "doesn't look that bad"],
+        "content": "it's been ages man !",
+        "done": false
+      }, {
+        "id": 12,
+        "title": "get a haircut",
+        "comments": ["will do this weekend"],
+        "content": "this could be a good reason to become a monk",
+        "done": true
+      }]
+    };
+  });
   beforeEach(module(function($provide) {
-    $provide.value("mlListService", {
+    $provide.value("mlList", {
       getListById: function() {
-        return mockList
+        return mockList;
       }
-    })
+    });
 
   }));
 
@@ -49,16 +48,16 @@ describe('mlStateService', function() {
       currentTask: "",
       currentContent: "",
       currentComments: ""
-    }
+    };
 
     /*when*/
     mlState.setCurrentList(1);
     var state = mlState.getStates();
 
     /*then*/
-    expect(state).toEqual(expectedState)
+    expect(state).toEqual(expectedState);
 
-  }))
+  }));
 
   it("setCurrentTask, should set current task state", inject(function(mlState) {
     /*setup*/
@@ -68,7 +67,7 @@ describe('mlStateService', function() {
       currentTask: mockList.tasks[1],
       currentContent: mockList.tasks[1].content,
       currentComments: mockList.tasks[1].comments
-    }
+    };
 
     /*when*/
     mlState.setCurrentList(1);
@@ -76,9 +75,9 @@ describe('mlStateService', function() {
     var state = mlState.getStates();
 
     /*then*/
-    expect(state).toEqual(expectedState)
+    expect(state).toEqual(expectedState);
 
-  }))
+  }));
 
 
 });

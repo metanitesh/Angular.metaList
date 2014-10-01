@@ -1,5 +1,6 @@
-describe('mlRouteParam service', function() {
+"use strict";
 
+describe('mlRouteParam service', function() {
 
   beforeEach(module('metaList'));
 
@@ -8,7 +9,7 @@ describe('mlRouteParam service', function() {
       path: function() {
         return "/1/12";
       }
-    })
+    });
   }));
 
   it('is sane', inject(function(mlRouteParam) {
@@ -24,7 +25,7 @@ describe('mlRouteParam service', function() {
     /*then*/
     expect(listId).toEqual("1");
 
-  }))
+  }));
 
 
   it("taskId, should  get listId from location object", inject(function(mlRouteParam) {
@@ -34,7 +35,7 @@ describe('mlRouteParam service', function() {
     /*then*/
     expect(taskId).toEqual("12");
 
-  }))
+  }));
 
   it("setListId, should set listId to location object", inject(function($location, mlRouteParam) {
 
@@ -45,8 +46,8 @@ describe('mlRouteParam service', function() {
     mlRouteParam.setListId(1);
 
     /*then*/
-    expect($location.path).toHaveBeenCalledWith("/1")
-  }))
+    expect($location.path).toHaveBeenCalledWith("/1");
+  }));
 
   it("setTaskId, should set taskId to location object", inject(function($location, mlRouteParam) {
 
@@ -57,9 +58,8 @@ describe('mlRouteParam service', function() {
     mlRouteParam.setTaskId(12);
 
     /*then*/
-    expect($location.path).toHaveBeenCalledWith("/1/12")
-  }))
-
+    expect($location.path).toHaveBeenCalledWith("/1/12");
+  }));
 
 
 

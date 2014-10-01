@@ -1,9 +1,11 @@
- describe("note controller", function() {
+"use strict";
+
+describe("mlNoteCtrl", function() {
 
   var scope;
   var controller;
 
-  
+
   beforeEach(module("metaList"));
 
   beforeEach(function() {
@@ -12,24 +14,24 @@
       scope = $rootScope.$new();
       controller = $controller;
 
-    })
+    });
   });
 
   beforeEach(function() {
     controller("mlNoteCtrl", {
       $scope: scope
-    })
-  })
+    });
+  });
 
-  it("updateContent, should update content of task", inject(function(mlTaskService){
+  it("updateContent, should update content of current task", inject(function(mlTask) {
     /*setup*/
-    spyOn(mlTaskService, "updateContent");
-    
+    spyOn(mlTask, "updateContent");
+
     /*when*/
     scope.updateContent("newContent");
 
     /*then*/
-    expect(mlTaskService.updateContent).toHaveBeenCalled();
-    expect(mlTaskService.updateContent.mostRecentCall.args[1]).toEqual("newContent");
+    expect(mlTask.updateContent).toHaveBeenCalled();
+    expect(mlTask.updateContent.mostRecentCall.args[1]).toEqual("newContent");
   }));
 });

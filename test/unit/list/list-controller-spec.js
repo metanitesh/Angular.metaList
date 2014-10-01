@@ -1,4 +1,6 @@
-describe("list controller", function() {
+"use strict";
+
+describe("mlListCtrl", function() {
 
   var scope;
   var controller;
@@ -6,17 +8,17 @@ describe("list controller", function() {
   var ListDbMock = [{
     title: "books",
     id: 1
-    }, {
+  }, {
     title: "movies",
     id: 2
-    }, {
+  }, {
     title: "life",
     id: 3
   }];
 
   var mlDataServiceMock = {
     getLists: function() {
-      return ListDbMock
+      return ListDbMock;
     },
     removeListById: function() {
       return;
@@ -25,9 +27,9 @@ describe("list controller", function() {
       return;
     },
     updateListById: function() {
-      return
+      return;
     }
-  }
+  };
 
   beforeEach(module("metaList"));
 
@@ -37,15 +39,15 @@ describe("list controller", function() {
       scope = $rootScope.$new();
       controller = $controller;
 
-    })
+    });
   });
 
   beforeEach(function() {
     controller("mlListCtrl", {
       $scope: scope,
-      mlListService: mlDataServiceMock
-    })
-  })
+      mlList: mlDataServiceMock
+    });
+  });
 
   it(":lists, should setup lists in scope", function() {
 
@@ -55,7 +57,7 @@ describe("list controller", function() {
 
   });
 
-  it(":selectList, should apply active class to selected list item", inject(function(mlRouteParam) {
+  it(":selectList, should setup active state for selected list", inject(function(mlRouteParam) {
 
     spyOn(mlRouteParam, "setListId");
     /*when*/
@@ -63,23 +65,23 @@ describe("list controller", function() {
     scope.selectList(1);
 
     /*then*/
-    
-    expect(mlRouteParam.setListId).toHaveBeenCalledWith(1);
-    expect(scope.enableEdit).toEqual(false);    
 
-  }))
+    expect(mlRouteParam.setListId).toHaveBeenCalledWith(1);
+    expect(scope.enableEdit).toEqual(false);
+
+  }));
 
   it(":removeList, should remove list from listDb", function() {
 
     /*setup*/
-    spyOn(mlDataServiceMock, "removeListById")
+    spyOn(mlDataServiceMock, "removeListById");
 
     /*when*/
     scope.removeList(1);
 
     /*then*/
     expect(mlDataServiceMock.removeListById).toHaveBeenCalledWith(1);
-  })
+  });
 
   it(":addList, should add new list in listDb", function() {
 
@@ -104,15 +106,15 @@ describe("list controller", function() {
 
     /*then*/
     expect(scope.enableEdit).toEqual(1);
-  })
+  });
 
   it(":stopPropagation, should stop event bubbling", function() {
 
-    event = {
+    var event = {
       stopPropagation: function() {
         return;
       }
-    }
+    };
 
     spyOn(event, "stopPropagation");
     /*when*/
@@ -120,18 +122,18 @@ describe("list controller", function() {
 
     /*then*/
     expect(event.stopPropagation).toHaveBeenCalled();
-  })
+  });
 
   it(":updateList, should update list title with new title on [enter]", function() {
 
     spyOn(mlDataServiceMock, "updateListById");
 
     /*when*/
-    scope.updateList(1, "bucketList")
+    scope.updateList(1, "bucketList");
 
     /*then*/
     expect(mlDataServiceMock.updateListById).toHaveBeenCalledWith(1, "bucketList");
 
-  })
+  });
 
 });

@@ -1,25 +1,26 @@
-angular.module("metaList").factory('mlListService', ["mlStorage", "mlIdGenerator", function(mlStorage, mlIdGenerator) {
+"use strict";
 
-    "use strict";
+angular.module("metaList").factory('mlList', ["mlStorage", "mlIdGenerator",
+  function(mlStorage, mlIdGenerator) {
 
     var listsDb = mlStorage.getData();
-   
+
     var getLists = function() {
       return listsDb;
-    }
+    };
 
     var getListById = function(id) {
       return _.findWhere(listsDb, {
         id: id
       });
-    }
+    };
 
     var removeListById = function(id) {
       for (var i = listsDb.length - 1; i >= 0; i--) {
-        if (listsDb[i]["id"] === id)
+        if (listsDb[i].id === id)
           listsDb.splice(i, 1);
       }
-    }
+    };
 
     var updateListById = function(id, title) {
       var list = getListById(id);
@@ -45,13 +46,13 @@ angular.module("metaList").factory('mlListService', ["mlStorage", "mlIdGenerator
 
       for (var key in config) {
         if (config.hasOwnProperty(key)) {
-          obj[key] = config[key]
+          obj[key] = config[key];
         }
       }
 
       listsDb.push(obj);
 
-    }
+    };
 
     return {
       getLists: getLists,
@@ -61,4 +62,5 @@ angular.module("metaList").factory('mlListService', ["mlStorage", "mlIdGenerator
       addList: addList
     };
 
-}]);
+  }
+]);

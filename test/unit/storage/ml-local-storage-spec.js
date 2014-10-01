@@ -1,16 +1,18 @@
-describe('local storage service', function() {
+"use strict";
+
+describe('mlLocalStorage service', function() {
 
   var testData;
 
   beforeEach(module('metaList'));
 
   beforeEach(function() {
-    localStorage.removeItem('angularMetaListTest')
+    localStorage.removeItem('angularMetaListTest');
 
     testData = {
       title: "todo"
     };
-  })
+  });
 
   it('is sane', inject(function(mlLocalStorage) {
 
@@ -21,17 +23,17 @@ describe('local storage service', function() {
   it("hasLocal, should check if localStorage exist", inject(function(mlLocalStorage) {
 
     /*then*/
-    expect(mlLocalStorage.hasLocal("angularMetaListTest")).toEqual(false)
-  }))
+    expect(mlLocalStorage.hasLocal("angularMetaListTest")).toEqual(false);
+  }));
 
   it("saveLocal, can save data to localStorage", inject(function(mlLocalStorage) {
 
     /*then*/
     expect(function() {
-      mlLocalStorage.saveLocal(testData)
+      mlLocalStorage.saveLocal(testData);
     }).toThrow(new Error('set storageName using setStorageName(), before fetching data'));
 
-     /*when*/
+    /*when*/
     mlLocalStorage.setStorageName('angularMetaListTest');
     mlLocalStorage.saveLocal(testData);
 
@@ -43,10 +45,10 @@ describe('local storage service', function() {
 
     /*then*/
     expect(function() {
-      mlLocalStorage.loadLocal()
+      mlLocalStorage.loadLocal();
     }).toThrow(new Error('set storageName using setStorageName(), before fetching data'));
 
-     /*when*/
+    /*when*/
     mlLocalStorage.setStorageName('angularMetaListTest');
     mlLocalStorage.saveLocal(testData);
     var expectedData = mlLocalStorage.loadLocal();
