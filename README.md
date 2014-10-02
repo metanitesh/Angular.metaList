@@ -1,4 +1,4 @@
-### Backbone.metaList [![BuildStatus](https://travis-ci.org/metanitesh/Angular.metaList.svg?branch=master)](https://travis-ci.org/metanitesh/Angular.metaList)
+### Angular.metaList [![BuildStatus](https://travis-ci.org/metanitesh/Angular.metaList.svg?branch=master)](https://travis-ci.org/metanitesh/Angular.metaList)
 
 >MetaList is a javascript application designed for sleek content organization. even though it can be used as a product actual purpose of the application is to demonstrate how to craft production ready javascript application in angular. 
 - [live demo](http://www.niteshsharma.com/angular.metalist)
@@ -24,14 +24,14 @@ npm start (this will also call `bower install` behind the scene)
 ```
 Now browse to the app at `http://localhost:8000/app/index.html`.
 
-#### Running Tests
+>###### Running Tests
 
-unit - 
+>unit - 
 ```
 karma start test/karma-conf.js
 ```
 
-end to end testing- 
+>end to end testing- 
 
 ```
 npm run update-webdriver (only required once);
