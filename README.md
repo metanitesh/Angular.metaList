@@ -40,12 +40,13 @@ protractor test/protractor-conf.js
 ```
 
 ####Angular: 
->Angular Js is arguably the best thought out framework for front-end application. the opinionated nature of framework significantly help to do it right way. beside bringing amazing features like DI, directive, two way binding to javascipt community the most incredible feat has to be their out of the box (unit/functional) testing ecosystem.
+>Angular Js is arguably the best thought out framework for front-end application. the opinionated nature of framework significantly help to do it right way. beside bringing mystic features like DI, directive or two way binding to javascipt community the most incredible feat has to be their out of the box (unit/functional) testing ecosystem.
 
 
+####Unit tests/ Jasmine:
 >MetaList follows TDD approach and uses jasmine to write unit tests. 
 
-- [run unit tests](http://www.niteshsharma.com/backbone.metalist/tests/unit/specrunner.html)
+- [run unit tests on CI](https://travis-ci.org/metanitesh/Angular.metaList)
 
 
 ####Build/ Grunt 
