@@ -15,27 +15,21 @@
 
 ####Setup
 
->*prerequisites*
+>**prerequisites**
 
-you need to have node/npm installed in your machine [nodejs.org](http://nodejs.org/) and have navigated inside the cloned application in your machine. 
-
->*loading dependencies*
-
+>you need to have node/npm installed in your machine ([nodejs.org](http://nodejs.org/)). then clone application and navigate inside it.
+**loading dependencies**
 ```
 npm install
 npm start (this will also call `bower install` behind the scene)
-```
->Now browse to the app at `http://localhost:8000/app/index.html`.
+```Now browse to the app at `http://localhost:8000/app/index.html`.
 
 >######Running Tests
-
->*unit*
+**unit**
 ```
 karma start test/karma-conf.js
 ```
-
->*end to end testing* 
-
+**end to end testing** 
 ```
 npm run update-webdriver (only required once);
 protractor test/protractor-conf.js
