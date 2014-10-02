@@ -48,6 +48,8 @@ protractor test/protractor-conf.js
 
 - [run unit tests on CI](https://travis-ci.org/metanitesh/Angular.metaList)
 
+####Functional tests
+>Functional testing can be quite intimidating task, but angular makes it a breeze. MetaList uses protractor to write functional test case
 
 ####Build/ Grunt 
 
