@@ -4,7 +4,7 @@
 - [live demo](http://www.niteshsharma.com/angular.metalist)
 - [unit tests ](https://travis-ci.org/metanitesh/Angular.metaList)
 
-####Other version
+### Other version
 
 >without framworks
 - [Js.metaList](https://github.com/metanitesh/Js.metaList/)
@@ -13,7 +13,7 @@
 - [Backbone.metaList](https://github.com/metanitesh/Backbone.metaList/)
 
 
-####Setup
+### Setup
 
 >**prerequisites**
 
@@ -39,35 +39,35 @@ npm run update-webdriver (only required once);
 protractor test/protractor-conf.js
 ```
 
-####Angular: 
+### Angular: 
 >Angular Js is arguably the best thought out framework for front-end application. the opinionated nature of framework significantly help to do it right way. beside bringing mystic features like DI, directive or two way binding to javascipt community the most incredible feat has to be their out of the box (unit/functional) testing ecosystem.
 
 
-####Unit tests/ Jasmine:
+### Unit tests/ Jasmine:
 >MetaList follows TDD approach and uses jasmine to write unit tests. 
 
 - [run unit tests on CI](https://travis-ci.org/metanitesh/Angular.metaList)
 
-####Functional tests
+### Functional tests
 >Functional testing can be quite intimidating task, but angular makes it a breeze. MetaList uses protractor to write functional test case
 
-####Build/ Grunt 
+### Build/ Grunt 
 
 >MetaList utilize grunt as a build tool and uses it to runs unit tests and lint Js files. 
 
-####CI/ Travis
+### CI/ Travis
 
 >CI system can run application's buildFile on multiple environment with every commit and notify back by email if something goes wrong. Although setting up local CI like jenkins could be a potential  hassle travis makes it a breeze for open source github project like this one.
 
 
-####SMACSS
+### SMACSS
 
 >MetaList follows smacss guidelines to architect css in modular fashion and organizes base, layout and module classes separately. Every css module in metalist can be effectively re-used and adopt different layouts.
 
 
-####DB/ LocalStorage 
+### DB/ LocalStorage 
 >MetaList stores data locally in your browser.
 
-####jQuery/ Underscore
+### jQuery/ Underscore
 >MetaList uses jquery for Dom and Underscore for utility belt.
 
